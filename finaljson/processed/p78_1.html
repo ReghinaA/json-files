@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>The P78-1 Satellite</title>
+<meta name="orgcode" content="660">
+<meta name="keywords" content="high-energy, archive, data, astronomy data, x-ray astronomy, 
+    gamma-ray astronomy, instrument, mission, observatory, software, high energy, science, xray, 
+    x-ray, gamma ray, gamma-ray, extreme ultraviolet, EUV, astrophysics, astronomy, analysis, 
+    research">
+  
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://heasarc.gsfc.nasa.gov/assets/uswds/js/uswds-init.min.js"></script>
+	<script defer src="https://heasarc.gsfc.nasa.gov/assets/uswds/js/uswds.min.js"></script>
+	<script defer src="https://heasarc.gsfc.nasa.gov/includes/js/xaminbox.js"></script>
+	<script defer src="https://heasarc.gsfc.nasa.gov/includes/js/nav.js"></script>
+	<link rel="stylesheet" href="https://heasarc.gsfc.nasa.gov/assets/uswds/css/styles.css" />
+	<link rel="stylesheet" href="https://heasarc.gsfc.nasa.gov/includes/styles.css" />
+
+	<!-- Google Analytics -->
+	<script type="text/javascript" language="javascript" id="_fed_an_ua_tag"
+		src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA">
+	</script>
+
+</head>
+<body>
+	<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+	<div class="usa-overlay"></div>
+<header class="usa-header usa-header--extended border-top-1 border-secondary-dark bg-ink">
+    <div class="usa-navbar">
+        <div class="usa-logo">
+            <div class="grid-container padding-0">
+                <div class="grid-row">
+                    <div class="grid-col-auto display-none desktop:display-block">
+                        <a class="" href="https://www.nasa.gov">
+                            <img src="https://heasarc.gsfc.nasa.gov/docs/images/nasa-logo.svg" class="maxw-10" alt="NASA Logo, National Aeronautics and Space Administration">
+                        </a>
+                    </div>
+                    <div class="grid-col-fill">
+                        <h6 class="margin-0 font-sans-2xs text-normal display-none desktop:display-block">
+                            <a href="https://www.nasa.gov/"><span class="text-base-lightest">NASA | </span></a>
+                            <a href="https://www.nasa.gov/goddard/"><span class="text-base-lightest">GSFC | </span></a>
+                            <a href="https://science.gsfc.nasa.gov/"><span class="text-base-lightest">Sciences and Exploration</span></a>
+                        </h6>
+                        <h6 class="usa-logo__text font-sans-xl"><a href="https://heasarc.gsfc.nasa.gov/"><span class="text-base-lightest">HEASARC</span></a></h6>
+                        <h6 class="margin-0 display-none desktop:display-block font-sans-2xs text-normal">
+                            <a href="https://heasarc.gsfc.nasa.gov/"><span class="text-base-lightest">High Energy Astrophysics Science Archive Research Center</span></a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="usa-menu-btn">Menu</button>
+    </div>
+    <nav aria-label="Primary navigation" class="usa-nav">
+        <div class="usa-nav__inner">
+            <button type="button" class="usa-nav__close">
+                <img src="https://heasarc.gsfc.nasa.gov/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
+            </button>
+            <ul class="usa-nav__primary usa-accordion">
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="heasarc-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-one">
+                        <span>HEASARC</span>
+                    </button>
+                    <ul id="extended-nav-section-one" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/HHP_heasarc_info.html"><span>About</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback"><span>Help Desk</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/meetings.html"><span>Upcoming Meetings</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/heasarc_req.html"><span>Archive Your Data</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/stats/stats.html"><span>Archive Statistics</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://lambda.gsfc.nasa.gov"><span>LAMBDA Portal</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="observatories-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-two">
+                        <span>Observatories</span>
+                    </button>
+                    <ul id="extended-nav-section-two" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item observatories-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/observatories.html"><span>Observatories</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/active.html"><span>Active Missions</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/past.html"><span>Past Missions</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/upcoming.html"><span>Upcoming Missions</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/comparison.html"><span>Comparison</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="archive-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-three">
+                        <span>Archive</span>
+                    </button>
+                    <ul id="extended-nav-section-three" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item archive-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/archive.html"><span>Archive</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/xamin/"><span>Search Portal</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/archive/apis.html"><span>Search APIs</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/archive/cloud.html"><span>Cloud</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/sciserver/"><span>SciServer</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/FTP/"><span>FTP Area</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="calibration-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-four">
+                        <span>Calibration</span>
+                    </button>
+                    <ul id="extended-nav-section-four" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item calibration-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html"><span>Calibration</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_remote_access.html"><span>Remote Access</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_doc.html"><span>Documentation</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_keywords.html"><span>Keywords</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_xcal.html"><span>Cross Calibration</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_supported_missions.html"><span>Supported Missions</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="software-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-five">
+                        <span>Software</span>
+                    </button>
+                    <ul id="extended-nav-section-five" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item software-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/index.html"><span>Software</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"><span>HEASoft</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html"><span>FITSIO</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/xspec/index.html"><span>Xspec</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/xronos/xronos.html"><span>Xronos</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/ximage/ximage.html"><span>Ximage</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/xstar/xstar.html"><span>XSTAR</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="tools-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-six">
+                        <span>Web Tools</span>
+                    </button>
+                    <ul id="extended-nav-section-six" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item tools-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/tools.html"><span>Web Tools</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3pimms/w3pimms.pl"><span>WebPIMMS</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/webspec/webspec.html"><span>WebSpec</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/viewing/viewing.pl"><span>Viewing Tool</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3nh/w3nh.pl"><span>nH Calculator</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/convcoord/convcoord.pl"><span>Coordinates Converter</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl"><span>Time Converter</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://skyview.gsfc.nasa.gov/"><span>SkyView</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="support-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-seven">
+                        <span>Help &amp; Support</span>
+                    </button>
+                    <ul id="extended-nav-section-seven" class="usa-nav__submenu">
+                        <!-- li class="usa-nav__submenu-item support-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/faq.html"><span>User Support</span></a>
+                        </li -->
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback"><span>Help Desk</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/RPS"><span>Proposal Submission</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/biblio/pubs/"><span>Bibliography</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/resources.html"><span>Resources for Scientists</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/faq.html"><span>FAQ</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/outreach.html"><span>Outreach</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="usa-nav__secondary">
+                <ul class="usa-nav__secondary-links">
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/docs/HHP_heasarc_info.html"><span>About</span></a></li>
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/docs/sitemap.html"><span>Sitemap</span></a></li>
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback"><span>Help Desk</span></a></li>
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/heasarc_req.html"><span>Archive Your Data</span></a></li>
+                </ul>
+                <section aria-label="Search component">
+                    <form class="usa-search usa-search--small" role="search" action="https://heasarc.gsfc.nasa.gov/cgi-bin/search/search.pl" method="post" id="HEASARCsearch" name="HEASARCsearch">
+                        <label class="usa-sr-only" for="search">Search</label>
+                        <input class="usa-input radius-left-md" id="search" type="search" name="tquery" />
+                        <button class="usa-button usa-button--secondary usa-button--hover" type="submit">
+                            <img src="https://heasarc.gsfc.nasa.gov/assets/uswds/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon"
+                                alt="Search" />
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+	<main id="main-content">
+
+
+
+<div class="grid-container">
+  <div class="grid-row grid-gap margin-top-5">
+    <div class="usa-prose content-col grid-col-12">
+      <div class="font-sans-xs">
+      
+      <!-- Uncomment and add text for alerts -->
+
+<div class="usa-alert usa-alert--info usa-alert--slim">
+  <div class="usa-alert__body">
+    <p class="usa-alert__text">
+      <a href="https://science.nasa.gov/astrophysics/programs/physics-of-the-cosmos/community/the-fornax-initiative/#beta-release"
+      class="usa-link">Come analyze HEASARC, IRSA, and MAST data in the cloud!
+    </a>    
+    The Fornax Initiative is now welcoming all interested beta users.  
+    </p>
+  </div>
+</div>
+
+
+
+
+<div class="grid-container">
+<div class="grid-row grid-gap">
+    <div class="grid-col-12 tablet:grid-col-3">
+      <div class="usa-accordion usa-accordion--multiselectable" data-allow-multiple>
+    <h4 class="usa-accordion__heading">
+        <button type="button" class="usa-accordion__button" aria-expanded="true" aria-controls="active-missions">
+            Active Missions
+        </button>
+    </h4>
+    <div id="active-missions" class="usa-accordion__content usa-prose margin-0 padding-0">
+        <div class="grid-container padding-1">
+    <div class="grid-row grid-gap-1">
+        <div class="tablet:grid-col-6">
+            <a href="ams.html" 
+               class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                      margin-bottom-1 padding-0 font-sans-3xs">AMS-02</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="astrosat.html" 
+               class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                      margin-bottom-1 padding-0 font-sans-3xs">AstroSat</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="blackcat.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">BlackCAT</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/calet/" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">CALET</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="chandra.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Chandra</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="dampe.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">DAMPE</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="einstein_probe.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Einstein Probe</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="fermi.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Fermi</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="gecam.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">GECAM</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="grbbeta.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">GRBBeta</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="hxmt.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">HXMT-Insight</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="ixpe.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">IXPE</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/maxi/" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">MAXI</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/nustar/" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">NuSTAR</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="srg.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">SRG eRosita /<br />ART-XC</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="svom.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">SVOM</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/swift/" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Swift</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="xmm.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">XMM-Newton</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="xposat.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">XPoSat</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/xrism/" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">XRISM</a>
+        </div>
+    </div>
+</div>
+
+    </div>
+
+    <h4 class="usa-accordion__heading">
+        <button type="button" class="usa-accordion__button" aria-expanded="false" aria-controls="past-missions">
+            Past Missions
+        </button>
+    </h4>
+    <div id="past-missions" class="usa-accordion__content usa-prose padding-0 margin-0">
+        <div class="grid-container padding-1">
+    <div class="grid-row grid-gap-1">
+        <div class="tablet:grid-col-6">
+            <a href="agile.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">AGILE</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="ans.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">ANS</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/ariel5/ariel5.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">ARIEL V</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/asca/asca.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">ASCA</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/bbxrt/bbxrt.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">BBXRT</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/sax/sax.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">BeppoSAX</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/cgro/cgro.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">CGRO</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/copernicus/copernicus.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">COPERNICUS</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/cosb/cosb.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">COS-B</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/dxs/dxs.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">DXS</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/einstein/heao2.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">EINSTEIN</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/euve/euve.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">EUVE</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/exosat/exosat.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">EXOSAT</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/ginga/ginga.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">GINGA</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/granat/granat.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">GRANAT</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/halosat/halosat.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">HaloSat</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/hakucho/hakucho.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">HAKUCHO</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/heao1/heao1.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">HEAO-1</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/heao3/heao3.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">HEAO-3</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/hete2/hete2.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">HETE-2</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/hitomi/index.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Hitomi</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/oso7/oso7.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">OSO-7</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/oso8/oso8.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">OSO-8</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/rosat/rosat.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">ROSAT</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/xte/rxte.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Rossi XTE</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/sas2/sas2.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">SAS-2</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/sas3/sas3.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">SAS-3</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/astroe/astroe2.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">Suzaku</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/tenma/tenma.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">TENMA</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/uhuru/uhuru.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">UHURU</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/vela5b/vela5b.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">VELA 5B</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/rockets/wass.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">WASS</a>
+        </div>
+        <div class="tablet:grid-col-6">
+            <a href="https://heasarc.gsfc.nasa.gov/docs/rockets/xqc.html" 
+            class="usa-button usa-button--outline width-full height-4 hover:bg-primary hover:text-white 
+                    margin-bottom-1 padding-0 font-sans-3xs">XQC</a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+    <div class="grid-col-12 tablet:grid-col-9 usa-prose">
+    
+
+
+
+<hr>
+<h2>P78-1</h2>
+<hr>
+
+<div style="overflow: hidden;">
+
+  <img alt="Photograph of the P78-1 satellite"
+       style="float:right; margin: 0 0 12px 12px; width: 198px;"
+       src="https://heasarc.gsfc.nasa.gov/Images/p78_1/p78_1_sat_small.gif">
+
+<p><b><font size="+2">T</font>he Space Test Program spacecraft P78-1</b> was launched on February 24, 1979 and continued operating until September 13, 1985, when it was shot down in orbit during an Air Force anti-satellite weapons test. The platform was of the Orbiting Solar Observatory (OSO) type, with a solar-oriented sail and a rotating wheel section. </p>
+  
+
+<h3>Mission Characteristics</h3>
+
+<div>
+    <!-- Desktop view: Keep table for larger screens -->
+    <table class="usa-table--borderless display-none tablet:display-table">
+        <tbody>  
+            <tr>
+                <td class="padding-right-3 text-top"><strong>Lifetime</strong></td>
+                <td class="text-top">Feb 1979&ndash;13 Sep 1985</td>
+            </tr>
+            <tr>
+                <td class="padding-right-3 text-top"><strong>Special Features</strong></td>
+                <td class="text-top">
+                        The instrument payload consisted of a gamma-ray spectrometer, a white light spectrograph, an extreme ultraviolet spectrometer, a high latitude particle spectrometer, an aerosol monitor, and an X-ray monitor. The X-ray monitor, designated NRL-608 or XMON, was a collaboration between the Naval Research Laboratory and Los Alamos National Laboratory.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- Mobile view: Card-based layout for small screens -->
+    <div class="tablet:display-none">
+        <div class="display-flex flex-column">
+            <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+                <div class="width-card-md text-bold margin-right-2">Lifetime</div>
+                <div class="flex-fill">Feb 1979&ndash;13 Sep 1985</div>
+            </div>
+            <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+                <div class="width-card-md text-bold margin-right-2">Special Features</div>
+                <div class="flex-fill">
+                        The instrument payload consisted of a gamma-ray spectrometer, a white light spectrograph, an extreme ultraviolet spectrometer, a high latitude particle spectrometer, an aerosol monitor, and an X-ray monitor. The X-ray monitor, designated NRL-608 or XMON, was a collaboration between the Naval Research Laboratory and Los Alamos National Laboratory.
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<h3>Payload</h3>
+
+
+<!-- Desktop view: Table for larger screens -->
+<table class="usa-table usa-hea-mission-table display-none tablet:display-table">
+  <colgroup>
+    <col style="width: 20%;">
+    <col style="width: 20%;">
+    <col style="width: 60%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th>Instrument</th>
+      <th>Characteristic</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        <th rowspan="4">X-ray Monitor (XMON)</th>
+            <td><strong>Energy Range</strong></td>
+            <td>3&ndash;10 keV</td>
+      </tr>
+      <tr>
+            <td><strong>Field of View</strong></td>
+            <td>3&deg; &times; 30&deg; (FWHM)</td>
+      </tr>
+      <tr>
+            <td><strong>Angular Resolution</strong></td>
+            <td>&sim;1 &deg;</td>
+      </tr>
+      <tr>
+            <td colspan="2">The X-ray monitor consisted of 2 collimated argon proportional counters. The instrument bandwidth of 3&ndash;10 keV was defined by the detector window absorption (the window was 0.01 inch beryllium) and the upper level discriminator. The active gas volume (P-10 mixture) was 2.54 cm deep, providing good efficiency up to 10 keV. Counts were recorded in 2 energy channels. Slat collimators defined the field-of-view for each detector; the long axes of the FOVs were perpendicular to each other. The long axes were inclined 45 degrees to the scan direction, allowing localization of transient events to about 1 degree. The centers of the FOVs coincided, and were pointed 40 degrees below the scan equator of the wheel in order to avoid scanning across the Sun. The spacecraft wheel rotated once every 6 seconds. This scan rate corresponds to 1 degree every 16 milliseconds; counts were telemetered in 64 or 32 millisecond bins to minimize smearing the collimator response.</p>
+
+<p>The platform spin vector was perpendicular to the plane of the Sun-synchronous orbit. Because the detector FOV was not symmetric about the spin vector, the scan pattern repeated with a 1 year cycle, rather than the 6 month cycle of the HEAO platforms. Some sources, as Vela X-1, spend as much as 2 months within the half response bands.</p>
+
+<p>P78-1 was in a noon-midnight, Sun-synchronous orbit at 600 km altitude. The orbital inclination of 96 degrees implied that a substantial fraction of the orbit was spent at high latitude, where the particle background prevented detector operation. In-flight experience showed that good data were obtained between 35 degrees N and 35 degrees S geomagnetic latitude outside the South Atlantic Anomaly. This yields an instrument duty cycle of 25&ndash;30%. Telemetry data were obtained for about 40-50% of the orbits, yielding a net data return of 10&ndash;15%. Though this data rate appears low, it means that about 10<sup>8</sup> seconds of good data reside in the XMON data base.</p>
+
+<p>The instrument parameters and data yield imply a 3 sigma point source sensitivity of 30 UFU in one day&rsquo;s operation (1 UFU = 2.66 &times; 10<sup>-12</sup> erg/cm<sup>2</sup>/s/keV). Each detector was about 0.1 of the area of the Uhuru instrument. The instrument background at low geomagnetic latitudes was &sim;16 ct/s. Of this background, &sim;6 ct/s comes from the diffuse cosmic X-ray background, with the rest being instrumental. Assuming a conservative 10% data return, the net source duty cycle in scanning mode is 1.4 &times; 10<sup>-3</sup>, implying a source exposure of 120 seconds per day. For a background of 16 ct/s, the 3 sigma error in determining the flux from a given sky bin is then 4.5 ct/s, or about 45 UFU, after 1 day. A limiting sensitivity of 30 UFU can be obtained by combining both detectors. A comparable error will exist in the flux determination for moderately bright galactic sources. Source confusion due to the 5 degrees FOV projected along the scan direction will complicate the observation of sources in the galactic bulge region (approximately |l| &lt; 30 deg, |b| &gt; 10 deg).</td>
+      </tr>
+  </tbody>
+</table>
+
+<!-- Mobile view: Card-based layout for small screens -->
+<div class="tablet:display-none">
+  <div class="grid-container margin-top-2">
+      <div class="usa-card margin-bottom-3">
+        <div class="usa-card__container">
+          <div class="usa-card__header bg-base-lighter">
+            <h4 class="usa-card__heading margin-0">X-ray Monitor (XMON)</h4>
+          </div>
+          <div class="usa-card__body">
+              <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+                <div class="width-card-md text-bold margin-right-2">Energy Range</div>
+                <div class="flex-fill">3&ndash;10 keV</div>
+              </div>
+              <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+                <div class="width-card-md text-bold margin-right-2">Field of View</div>
+                <div class="flex-fill">3&deg; &times; 30&deg; (FWHM)</div>
+              </div>
+              <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+                <div class="width-card-md text-bold margin-right-2">Angular Resolution</div>
+                <div class="flex-fill">&sim;1 &deg;</div>
+              </div>
+            <div class="padding-top-2 border-top-1px border-base-lighter">
+              The X-ray monitor consisted of 2 collimated argon proportional counters. The instrument bandwidth of 3&ndash;10 keV was defined by the detector window absorption (the window was 0.01 inch beryllium) and the upper level discriminator. The active gas volume (P-10 mixture) was 2.54 cm deep, providing good efficiency up to 10 keV. Counts were recorded in 2 energy channels. Slat collimators defined the field-of-view for each detector; the long axes of the FOVs were perpendicular to each other. The long axes were inclined 45 degrees to the scan direction, allowing localization of transient events to about 1 degree. The centers of the FOVs coincided, and were pointed 40 degrees below the scan equator of the wheel in order to avoid scanning across the Sun. The spacecraft wheel rotated once every 6 seconds. This scan rate corresponds to 1 degree every 16 milliseconds; counts were telemetered in 64 or 32 millisecond bins to minimize smearing the collimator response.</p>
+
+<p>The platform spin vector was perpendicular to the plane of the Sun-synchronous orbit. Because the detector FOV was not symmetric about the spin vector, the scan pattern repeated with a 1 year cycle, rather than the 6 month cycle of the HEAO platforms. Some sources, as Vela X-1, spend as much as 2 months within the half response bands.</p>
+
+<p>P78-1 was in a noon-midnight, Sun-synchronous orbit at 600 km altitude. The orbital inclination of 96 degrees implied that a substantial fraction of the orbit was spent at high latitude, where the particle background prevented detector operation. In-flight experience showed that good data were obtained between 35 degrees N and 35 degrees S geomagnetic latitude outside the South Atlantic Anomaly. This yields an instrument duty cycle of 25&ndash;30%. Telemetry data were obtained for about 40-50% of the orbits, yielding a net data return of 10&ndash;15%. Though this data rate appears low, it means that about 10<sup>8</sup> seconds of good data reside in the XMON data base.</p>
+
+<p>The instrument parameters and data yield imply a 3 sigma point source sensitivity of 30 UFU in one day&rsquo;s operation (1 UFU = 2.66 &times; 10<sup>-12</sup> erg/cm<sup>2</sup>/s/keV). Each detector was about 0.1 of the area of the Uhuru instrument. The instrument background at low geomagnetic latitudes was &sim;16 ct/s. Of this background, &sim;6 ct/s comes from the diffuse cosmic X-ray background, with the rest being instrumental. Assuming a conservative 10% data return, the net source duty cycle in scanning mode is 1.4 &times; 10<sup>-3</sup>, implying a source exposure of 120 seconds per day. For a background of 16 ct/s, the 3 sigma error in determining the flux from a given sky bin is then 4.5 ct/s, or about 45 UFU, after 1 day. A limiting sensitivity of 30 UFU can be obtained by combining both detectors. A comparable error will exist in the flux determination for moderately bright galactic sources. Source confusion due to the 5 degrees FOV projected along the scan direction will complicate the observation of sources in the galactic bulge region (approximately |l| &lt; 30 deg, |b| &gt; 10 deg).
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<h3>Science Highlights</h3>
+
+<ul class="usa-list usa-list--unstyled">
+<li class="padding-bottom-1">Data from the P78-1 X-Ray Monitor experiment offer source monitoring with a sensitivity comparable to that of instruments flown on SAS-3, OSO-8, or Hakucho, and the advantages of longer observing times and unique temporal coverage. Five fields of inquiry are particularly well suited for investigation with P78-1 data. These are:</li>
+<li class="padding-bottom-1">study of pulsational, eclipse, precession, and intrinsic source variability on time scales of tens of seconds to months in galactic X-ray sources</li>
+<li class="padding-bottom-1">pulse timing studies of neutron stars</li>
+<li class="padding-bottom-1">identification and study of new transient sources</li>
+<li class="padding-bottom-1">observations of X-ray and gamma-ray bursts, and other fast transients</li>
+<li class="padding-bottom-1">simultaneous X-ray coverage of objects observed by other satellites, such as HEAO-2 and 3, as well as bridging the gap in coverage of objects in the observational timeline</li>
+</ul>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/biblio/p78_1_biblio.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Publications
+    </a>
+  </div>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    <a href="allmissions.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       All Missions
+    </a>
+    <a href="time.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Time Ordered List
+    </a>
+    <a href="energy.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Energy Ordered List
+    </a>
+  </div>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+ </div><!-- end font-sans-2xs -->
+</div><!-- end content-col -->
+</div><!-- end .grid-row grid-gap-->
+</div><!-- end .grid-container-->
+</main><!-- end id="main-content" -->
+
+<footer class="usa-footer usa-footer--slim margin-top-auto">
+	<div class="grid-container usa-footer__return-to-top">
+		<a href="#" class="usa-link">Return to top</a>
+	</div>
+
+	<div class="usa-footer__primary-section usa-dark-background bg-ink">
+		<div class="usa-footer__primary-container grid-row">
+			<div class="mobile-lg:grid-col">
+				<nav class="usa-footer__nav" aria-label="Footer navigation,">
+					<ul class="grid-row grid-gap">
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/">HEASARC</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/observatories.html">Observatories</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/archive.html">Archive</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html">Calibration</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/software.html">Software</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/tools.html">Web Tools</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback">Help &amp; Support</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+	</div>
+  <div class="usa-dark-background bg-ink padding-bottom-2">
+    <div class="grid-container padding-2 font-sans-2xs">
+      <div class="usa-footer__logo grid-row">
+        <div class="grid-col-2 display-none tablet:display-block">
+          <img class="width-12" src="https://heasarc.gsfc.nasa.gov/docs/images/nasa-logo.svg" alt="NASA logo" />
+        </div>
+        <div class="grid-col-12 desktop:grid-col-2">
+          <ul class="usa-list usa-list--unstyled">
+            <li><a class="usa-link--external" href="https://www.nasa.gov/about/">About NASA</a></li>
+            <li><a class="usa-link--external" href="https://www.nasa.gov/accessibility/">Accessibility</a></li>
+					  <li><a class="usa-link--external" href="https://www.nasa.gov/foia/">FOIA</a></li>
+          </ul>
+        </div>
+        <div class="grid-col-12 desktop:grid-col-3">
+          <ul class="usa-list usa-list--unstyled text-base-lightest">
+            <li>
+              <a class="usa-link--external" href="https://www.nasa.gov/odeo/no-fear-act/">No FEAR Act</a>
+            </li>
+            <li>
+              <a class="usa-link--external" href="https://www.nasa.gov/privacy/">Privacy Policy</a>
+            </li>
+            <li>
+              <a class="usa-link--external" href="https://www.nasa.gov/vulnerability-disclosure-policy/">Vulnerability Disclosure Policy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-col-12 desktop:grid-col-1"></div>
+        <div class="grid-col-12 desktop:grid-col-4">
+          <ul class="usa-list usa-list--unstyled text-base-lightest">
+            <li>
+              Responsible Official: <a class="usa-link" href="mailto:ryan.smallcomb@nasa.gov">Ryan Smallcomb</a>
+            </li>
+            <li>
+              Site Editor: <a class="usa-link" href="mailto:kristen.m.killingsworth@nasa.gov">Kristen Killingsworth</a>
+            </li>
+            <li>
+              Last Updated: 20-Feb-2026
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-row text-base-lightest">
+        <div class="tablet:grid-col-2"></div>
+        <div class="tablet:grid-col-10">
+          A service of the
+          <a class="padding-x-05 usa-link--external" href="https://science.gsfc.nasa.gov/astrophysics">Astrophysics Science Division</a>
+          at <a class="padding-x-05 usa-link--external" href="https://www.nasa.gov/goddard/">NASA/GSFC</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+
+
+

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{{ mission.title }}</title>
+<meta name="orgcode" content="660">
+<meta name="keywords" content="high-energy, archive, data, astronomy data, x-ray astronomy, 
+    gamma-ray astronomy, instrument, mission, observatory, software, high energy, science, xray, 
+    x-ray, gamma ray, gamma-ray, extreme ultraviolet, EUV, astrophysics, astronomy, analysis, 
+    research">
+
+<!--#include virtual="/includes/uswds-header-no-sidenav.html"-->
+
+<hr>
+<h2>{{ mission.name }}</h2>
+<hr>
+
+<!--Isolate the float right image to wrap without breaking the USWDS grid-->
+{% if mission.imageurl %}
+<div style="overflow: hidden;">
+  <img alt="{{ mission.alttext }}"
+       style="float:right; margin: 0 0 12px 12px; width: {{ mission.imagesize }}px;"
+       src="{{ mission.imageurl }}">
+
+{% endif %}
+{% if mission.descript %}
+{{ mission.descript|safe }}
+{% endif %}  
+
+<h3>Mission Characteristics</h3>
+
+<!-- Converted Mission Characteristics table to USWDS flex/grid -->
+<div class="grid-container">
+  <div class="display-flex flex-column">
+    <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+      <div class="width-card-md text-bold margin-right-2">Lifetime</div>
+      <div class="flex-fill">{{ mission.lifetime|safe }}</div>
+    </div>
+
+    {% if mission.features and mission.features != [""] and mission.features|length > 0 %}
+    <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+      <div class="width-card-md text-bold margin-right-2">Special Features</div>
+      <div class="flex-fill">
+        {% if mission.features|length == 1 %}
+          {{ mission.features[0]|safe }}
+        {% else %}
+          <ul class="usa-list usa-list--unstyled">
+            {% for feature in mission.features %}
+              <li class="padding-bottom-1">{{ feature|safe }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% if mission.series|length > 0 %}
+<!-- Converted Series table to USWDS cards -->
+<div class="grid-container margin-top-2">
+  {% for sat in mission.series %}
+  <div class="usa-card margin-bottom-2">
+    <div class="usa-card__container">
+      <div class="usa-card__header">
+        <h4 class="usa-card__heading">{{ sat.name|safe }}</h4>
+      </div>
+      <div class="usa-card__body">
+        {{ sat.descript|safe }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if mission.instruments|length > 0 %}
+<h3>Payload</h3>
+{% if mission.instrument_preamble %}
+<p>{{ mission.instrument_preamble|safe }}</p>
+{% endif %}
+
+{% set ns = namespace(has_characteristics=false) %}
+{% for instrument in mission.instruments %}
+  {% if not ns.has_characteristics and (instrument.energy or instrument.wavelength or instrument.area or instrument.length or instrument.fov or instrument.resolution or instrument.sensitivity or instrument.energy_resolution or instrument.spectral_resolution or instrument.temporal_resolution or instrument.time_resolution or instrument.polarization) %}
+    {% set ns.has_characteristics = true %}
+  {% endif %}
+{% endfor %}
+<!-- Converted Instruments table to USWDS flex/grid -->
+<div class="grid-container margin-top-2">
+  {% for instrument in mission.instruments %}
+    {% set characteristics = [] %}
+    {% if instrument.energy %}{% set _ = characteristics.append(('Energy Range', instrument.energy)) %}{% endif %}
+    {% if instrument.wavelength %}{% set _ = characteristics.append(('Wavelength', instrument.wavelength)) %}{% endif %}
+    {% if instrument.area %}{% set _ = characteristics.append(('Effective Area', instrument.area)) %}{% endif %}
+    {% if instrument.length %}{% set _ = characteristics.append(('Focal Length', instrument.length)) %}{% endif %}
+    {% if instrument.fov %}{% set _ = characteristics.append(('Field of View', instrument.fov)) %}{% endif %}
+    {% if instrument.resolution %}{% set _ = characteristics.append(('Angular Resolution', instrument.resolution)) %}{% endif %}
+    {% if instrument.sensitivity %}{% set _ = characteristics.append(('Sensitivity', instrument.sensitivity)) %}{% endif %}
+    {% if instrument.energy_resolution %}{% set _ = characteristics.append(('Energy Resolution', instrument.energy_resolution)) %}{% endif %}
+    {% if instrument.spectral_resolution %}{% set _ = characteristics.append(('Spectral Resolution', instrument.spectral_resolution)) %}{% endif %}
+    {% if instrument.temporal_resolution %}{% set _ = characteristics.append(('Time Resolution', instrument.temporal_resolution)) %}{% endif %}
+    {% if instrument.time_resolution %}{% set _ = characteristics.append(('Time Resolution', instrument.time_resolution)) %}{% endif %}
+    {% if instrument.polarization %}{% set _ = characteristics.append(('Polarization', instrument.polarization)) %}{% endif %}
+    {% set nchars = characteristics|length %}
+    {% if instrument.descript %}{% set nchars = nchars + 1 %}{% endif %}
+    <div class="usa-card margin-bottom-3">
+      <div class="usa-card__container">
+        <div class="usa-card__header">
+          <h4 class="usa-card__heading">{{ instrument.name|safe }}</h4>
+        </div>
+        <div class="usa-card__body">
+          {% if characteristics|length > 0 %}
+            {% for char_name, char_value in characteristics %}
+            <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+              <div class="width-card-md text-bold margin-right-2">{{ char_name }}</div>
+              <div class="flex-fill">{{ char_value|safe }}</div>
+            </div>
+            {% endfor %}
+          {% endif %}
+          {% if instrument.descript %}
+          <div class="display-flex flex-justify-start flex-align-start padding-y-1">
+            <div class="width-card-md text-bold">&nbsp;</div>
+            <div class="flex-fill">{{ instrument.descript|safe }}</div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% if mission.instrument_postscript %}
+
+<p>{{ mission.instrument_postscript }}</p>
+{% endif %}
+{% endif %}
+{% if mission.highlights and mission.highlights != [""] and mission.highlights|length > 0 %}
+
+<h3>Science Highlights</h3>
+
+{% if mission.highlights|length == 1 %}
+<p>{{ mission.highlights[0]|safe }}</p>
+{% else %}
+<ul class="usa-list usa-list--unstyled">
+   {% for highlight in mission.highlights[0:] %}
+<li class="padding-bottom-1">{{ highlight|safe }}</li>
+   {% endfor %}
+</ul>
+{% endif %}
+{% else %}
+ {% if mission.goals and mission.goals != [""] and mission.goals|length > 0 %}
+
+<h3>Science Goals</h3>
+
+{% if mission.goals|length == 1 %}
+{{ mission.goals[0]|safe }}
+{% else %}
+<ul class="usa-list usa-list--unstyled">
+  {% for goal in mission.goals[0:] %}
+<li class="padding-bottom-1">{{ goal|safe }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endif %}
+{% endif %}
+{% if mission.additional %}
+
+<p>{{ mission.additional }}</p>
+{% endif %}
+{% if mission.archive %}
+
+<h3>Archive</h3>
+
+{{ mission.archive|safe }}
+{% endif %}
+{% if mission.imageurl %}
+</div>
+{% endif %}
+{% if mission.publications and mission.publications != [""] and mission.publications|length > 0 %}
+
+<h3>Publications</h3>
+
+{% if mission.publications|length == 1 %}
+<p>{{ mission.publications[0]|safe }}</p>
+{% else %}
+<ul class="usa-list usa-list--unstyled">
+  {% for reference in mission.publications[0:] %}
+<li class="padding-bottom-1">{{ reference|safe }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endif %}
+{% if mission.credit|length > 0 %}
+
+<h3>Credits</h3>
+
+<p>{{ mission.credit|safe }}</p>
+
+{% endif %}
+{% if mission.navigation|length > 0 %}
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    {% for navigation in mission.navigation %}
+    <a href="{{ navigation.url }}"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+      {{ navigation.text|safe }}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% elif mission.goffooter %}
+<!--================================================================-->
+<hr><p>
+
+<!--#include virtual="{{ mission.goffooter }}"-->
+  
+<!--================================================================-->
+
+<!--#include virtual="/docs/heasarc/missions/missions_footer.html"-->
+{% endif %}
+
+<!--================================================================-->
+<hr><p>
+
+ <!--#include virtual="/includes/uswds-footer.html"-->
+

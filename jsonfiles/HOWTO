@@ -1,0 +1,75 @@
+HOWTO
+5 November 2025
+Jesse Allen (NASA/GSFC HEASARC)
+
+There are a set of static HTML files for each of ~150 different high energy astrophysics missions.
+They are currently in a semi-consistent form, but many are decades older than others and have
+dated design and layout. The intent is to standardize the format of all these pages, modernize
+the layout and design, and make it straightforward to revise and update the format of all pages
+in the future.
+
+This is done by converting the old HTML pages into .json files and using Beautiful Soup and
+Flask with a standardized template to make one common design for all pages. Once all the pages
+have been converted into .json files, it is also possible to rapidly generate several different
+prototype designs by using the same input files with series of different templates.
+
+The HTML pages were first converted in .json format using simple Perl scraping to get a
+close-enough first draft, then manually editing the .json files to correct for scraping
+format issues and add new fields while standardizing the content. The scraping code was
+inelegant and incomplete enough to be useful for making the first draft, but not viable
+for future use. It was discarded after use.
+
+The final .json files were broken into three sets:
+* final_json/(missionname).json
+  These are templates for generating HTML pages to go in
+  https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/(missionname).html
+
+* gof_json/(missionname).json
+  For any mission where the HEASARC maintains a catalog or data, there is a GOF directory
+  and suite of pages (usually, but not always: a basic mission description, an "about"
+  page with more detailed information, archive guide, software guide, bibliography pages,
+  image gallery, and calibration database (CALDB) links. The basic mission page for each
+  GOF is highly similar to the /docs/heasarc/missions/ pages and have been broken down
+  into .json files here. These may be placed in the GOF pages when revised, or a separate
+  copy kept in /docs/heasarc/missions/ (depending on design choices not yet made)
+
+* gof_local_json/(missionname).json
+  These are highly similar to the GOF pages, but for certain missions with larger and
+  more complex GOF pages (or even separate web servers, such as Swift), there is NOT a single
+  GOF page with just a basic description. Thus even though there is a GOF, there is a
+  unique /docs/heasarc/missions/(missionname).html file.
+
+Individual fields in the .json files are use for various different template variations,
+but in many designs, not all given fields are used. For example, one proposed design
+includes a sidebar for navigation with direct links for all ~150 missions, broken into
+groups by decade of launch (or "future"). The field "decade: YYYY" appears in the .json
+to render this correctly. However, in other designs, this is not used.
+
+Once the .json are finalized, copy them into clean_json/ and run the code to convert
+the .json content to HTML
+
+% python write_html.py 
+
+This will run for ALL .json files in the clean_json/ directory
+
+Check the HTML and edit the .json (or template) as needed. The file
+
+mission_template.html
+
+gives instructions using Jinja2 for Flask to fill in the .json variables in the correct place and
+format. Adjust this template for redesigns, then run each .json through to make the new design.
+
+Stage the resulting HTML to sed-gitlab in the usual fashion.
+
+missions.json
+
+contains tracking on versions and changes to the .json collection.
+
+
+
+SPECIAL NOTES
+
+The template includes a number of server-side includes. These can be replaced with
+statics elements and the templates set to use them. The same can be done with
+all the image links if necessary for prototyping outside the SED gitlab environment.
+THIS HAS NOT YET BEEN DONE

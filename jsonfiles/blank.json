@@ -1,0 +1,55 @@
+{
+  "title": "",
+    "name": "",
+    "gofheader" : "",
+    "gofsidebar" : ""
+    "decade" : ,
+  "alttext": "",
+  "imagesize": null,
+    "imageurl": null,
+  "descript": "",
+  "lifetime": "",
+    "features": [""],
+    "instruments_preamble" : "",
+    "instruments": [
+	{
+	    "name" : "",
+	    "length" : "",
+	    "wavelength" : "",
+	    "energy" : "",
+	    "resolution" : "",
+	    "fov" : "",
+	    "area" : "",
+	    "energy_resolution" : "",
+	    "temporal_resolution" : "",
+	    "sensitivity" : "",
+	    "polarization" : "",
+	    "descript" : ""
+	},
+	{
+	},
+	{
+	}
+    ],
+    "instruments_postscript" : "",
+    "highlights": [
+	"",
+	""
+    ],
+    "archive": "",
+    "publications" : [
+	""
+    ],
+    "credit" : "",
+    "navigation": [
+	{
+	    "url" : "",
+	    "text" : ""
+	},
+	{
+	    "url" : "",
+	    "text" : ""
+	}
+    ],
+    "goffooter" : ""
+}

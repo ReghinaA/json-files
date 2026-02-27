@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>High-Energy Missions</title>
+<meta name="orgcode" content="660">
+<meta name="keywords" content="high-energy, archive, data, astronomy data, x-ray astronomy, 
+    gamma-ray astronomy, instrument, mission, observatory, software, high energy, science, xray, 
+    x-ray, gamma ray, gamma-ray, extreme ultraviolet, EUV, astrophysics, astronomy, analysis, 
+    research">
+
+<style>
+  .missions-page-container .filter-controls {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr auto;
+      gap: 15px;
+  }
+
+  .missions-page-container .filter-group {
+      display: flex;
+      flex-direction: column;
+  }
+
+  .missions-page-container .filter-label {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 6px;
+      color: #2c3e50;
+  }
+
+  .missions-page-container .filter-controls select {
+      padding: 8px;
+      border: 2px solid #e1e8ed;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+  }
+
+  .missions-page-container .filter-controls select:focus {
+      outline: none;
+      border-color: #3498db;
+      box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+  }
+
+  .missions-page-container .clear-btn {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      align-self: flex-end;
+      margin-top: 26px;
+  }
+
+  .missions-page-container .clear-btn:hover {
+      background-color: #c0392b;
+  }
+
+  .missions-page-container .results-info {
+      background: white;
+      padding: 5px 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      color: #7f8c8d;
+      font-weight: 500;
+  }
+
+  .missions-page-container #itemContainer {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 5px;
+  }
+
+  .missions-page-container .item {
+      background: white;
+      border-radius: 8px;
+      padding: 6px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border-left: 4px solid #3498db;
+      position: relative;
+  }
+
+  .missions-page-container .item h3 {
+      color: #2c3e50;
+      margin-bottom: 6px;
+      font-size: 1.0em;
+  }
+
+  /* Status border colors */
+  .missions-page-container .category-past { border-left-color: #0076d6; }    /* blue-50v */
+  .missions-page-container .category-current { border-left-color: #719f2a; } /* green-40v */
+  .missions-page-container .category-future { border-left-color: #c2850c; }  /* gold-40v */
+
+  /* HEASARC indicator */
+  .missions-page-container .category-heasarc::after {
+      content: "HEASARC";
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: #496fd8; /* indigo-cool-50 */
+      color: white;
+      padding: 2px 6px;
+      font-size: 8px;
+      font-weight: bold;
+      border-radius: 1px;
+      z-index: 10;
+  }
+
+  .missions-page-container .no-results {
+      text-align: center;
+      padding: 60px 20px;
+      color: #7f8c8d;
+      font-size: 1.2em;
+      grid-column: 1 / -1;
+  }
+
+  @media (max-width: 768px) {
+      .missions-page-container .filter-controls {
+          grid-template-columns: 1fr;
+          gap: 10px;
+      }
+      
+      .missions-page-container #itemContainer {
+          grid-template-columns: 1fr;
+      }
+}
+</style>
+
+
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://heasarc.gsfc.nasa.gov/assets/uswds/js/uswds-init.min.js"></script>
+	<script defer src="https://heasarc.gsfc.nasa.gov/assets/uswds/js/uswds.min.js"></script>
+	<script defer src="https://heasarc.gsfc.nasa.gov/includes/js/xaminbox.js"></script>
+	<script defer src="https://heasarc.gsfc.nasa.gov/includes/js/nav.js"></script>
+	<link rel="stylesheet" href="https://heasarc.gsfc.nasa.gov/assets/uswds/css/styles.css" />
+	<link rel="stylesheet" href="https://heasarc.gsfc.nasa.gov/includes/styles.css" />
+
+	<!-- Google Analytics -->
+	<script type="text/javascript" language="javascript" id="_fed_an_ua_tag"
+		src="https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=NASA">
+	</script>
+
+</head>
+<body>
+	<a class="usa-skipnav" href="#main-content">Skip to main content</a>
+
+	<div class="usa-overlay"></div>
+<header class="usa-header usa-header--extended border-top-1 border-secondary-dark bg-ink">
+    <div class="usa-navbar">
+        <div class="usa-logo">
+            <div class="grid-container padding-0">
+                <div class="grid-row">
+                    <div class="grid-col-auto display-none desktop:display-block">
+                        <a class="" href="https://www.nasa.gov">
+                            <img src="https://heasarc.gsfc.nasa.gov/docs/images/nasa-logo.svg" class="maxw-10" alt="NASA Logo, National Aeronautics and Space Administration">
+                        </a>
+                    </div>
+                    <div class="grid-col-fill">
+                        <h6 class="margin-0 font-sans-2xs text-normal display-none desktop:display-block">
+                            <a href="https://www.nasa.gov/"><span class="text-base-lightest">NASA | </span></a>
+                            <a href="https://www.nasa.gov/goddard/"><span class="text-base-lightest">GSFC | </span></a>
+                            <a href="https://science.gsfc.nasa.gov/"><span class="text-base-lightest">Sciences and Exploration</span></a>
+                        </h6>
+                        <h6 class="usa-logo__text font-sans-xl"><a href="https://heasarc.gsfc.nasa.gov"><span class="text-base-lightest">HEASARC</span></a></h6>
+                        <h6 class="margin-0 display-none desktop:display-block font-sans-2xs text-normal">
+                            <a href="https://heasarc.gsfc.nasa.gov"><span class="text-base-lightest">High Energy Astrophysics Science Archive Research Center</span></a>
+                        </h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="usa-menu-btn">Menu</button>
+    </div>
+    <nav aria-label="Primary navigation" class="usa-nav">
+        <div class="usa-nav__inner">
+            <button type="button" class="usa-nav__close">
+                <img src="https://heasarc.gsfc.nasa.gov/assets/uswds/img/usa-icons/close.svg" role="img" alt="Close" />
+            </button>
+            <ul class="usa-nav__primary usa-accordion">
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="heasarc-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-one">
+                        <span>HEASARC</span>
+                    </button>
+                    <ul id="extended-nav-section-one" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/HHP_heasarc_info.html"><span>About</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback"><span>Help Desk</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/meetings.html"><span>Upcoming Meetings</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/heasarc_req.html"><span>Archive Your Data</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/stats/stats.html"><span>Archive Statistics</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item heasarc-nav-child">
+                            <a href="https://lambda.gsfc.nasa.gov"><span>LAMBDA Portal</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="observatories-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-two">
+                        <span>Observatories</span>
+                    </button>
+                    <ul id="extended-nav-section-two" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item observatories-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/observatories.html"><span>Observatories</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/active.html"><span>Active Missions</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/past.html"><span>Past Missions</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/upcoming.html"><span>Upcoming Missions</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item observatories-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/missions/comparison.html"><span>Comparison</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="archive-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-three">
+                        <span>Archive</span>
+                    </button>
+                    <ul id="extended-nav-section-three" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item archive-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/archive.html"><span>Archive</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/xamin/"><span>Search Portal</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/archive/apis.html"><span>Search APIs</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/archive/cloud.html"><span>Cloud</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/sciserver/"><span>SciServer</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item archive-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/FTP/"><span>FTP Area</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="calibration-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-four">
+                        <span>Calibration</span>
+                    </button>
+                    <ul id="extended-nav-section-four" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item calibration-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html"><span>Calibration</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_remote_access.html"><span>Remote Access</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_doc.html"><span>Documentation</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_keywords.html"><span>Keywords</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_xcal.html"><span>Cross Calibration</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item calibration-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_supported_missions.html"><span>Supported Missions</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="software-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-five">
+                        <span>Software</span>
+                    </button>
+                    <ul id="extended-nav-section-five" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item software-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/index.html"><span>Software</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/lheasoft/"><span>HEASoft</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html"><span>FITSIO</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/xspec/index.html"><span>Xspec</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/xronos/xronos.html"><span>Xronos</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/ximage/ximage.html"><span>Ximage</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item software-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/software/xstar/xstar.html"><span>XSTAR</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="tools-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-six">
+                        <span>Web Tools</span>
+                    </button>
+                    <ul id="extended-nav-section-six" class="usa-nav__submenu">
+                        <li class="usa-nav__submenu-item tools-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/tools.html"><span>Web Tools</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3pimms/w3pimms.pl"><span>WebPIMMS</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/webspec/webspec.html"><span>WebSpec</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/viewing/viewing.pl"><span>Viewing Tool</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/w3nh/w3nh.pl"><span>nH Calculator</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/convcoord/convcoord.pl"><span>Coordinates Converter</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Tools/xTime/xTime.pl"><span>Time Converter</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item tools-nav-child">
+                            <a href="https://skyview.gsfc.nasa.gov/"><span>SkyView</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="usa-nav__primary-item">
+                    <button type="button" id="support-nav" class="usa-accordion__button usa-nav__link" aria-expanded="false"
+                        aria-controls="extended-nav-section-seven">
+                        <span>Help &amp; Support</span>
+                    </button>
+                    <ul id="extended-nav-section-seven" class="usa-nav__submenu">
+                        <!-- li class="usa-nav__submenu-item support-nav-child text-bold border-bottom-1 border-primary">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/faq.html"><span>User Support</span></a>
+                        </li -->
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback"><span>Help Desk</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/RPS"><span>Proposal Submission</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/biblio/pubs/"><span>Bibliography</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/resources.html"><span>Resources for Scientists</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/faq.html"><span>FAQ</span></a>
+                        </li>
+                        <li class="usa-nav__submenu-item support-nav-child">
+                            <a href="https://heasarc.gsfc.nasa.gov/docs/outreach.html"><span>Outreach</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+            <div class="usa-nav__secondary">
+                <ul class="usa-nav__secondary-links">
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/docs/HHP_heasarc_info.html"><span>About</span></a></li>
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/docs/sitemap.html"><span>Sitemap</span></a></li>
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback"><span>Help Desk</span></a></li>
+                    <li class="usa-nav__secondary-item"><a href="https://heasarc.gsfc.nasa.gov/docs/heasarc/heasarc_req.html"><span>Archive Your Data</span></a></li>
+                </ul>
+                <section aria-label="Search component">
+                    <form class="usa-search usa-search--small" role="search" action="https://heasarc.gsfc.nasa.gov/cgi-bin/search/search.pl" method="post" id="HEASARCsearch" name="HEASARCsearch">
+                        <label class="usa-sr-only" for="search">Search</label>
+                        <input class="usa-input radius-left-md" id="search" type="search" name="tquery" />
+                        <button class="usa-button usa-button--secondary usa-button--hover" type="submit">
+                            <img src="https://heasarc.gsfc.nasa.gov/assets/uswds/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon"
+                                alt="Search" />
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+	<main id="main-content">
+
+
+
+<div class="grid-container">
+  <div class="grid-row grid-gap margin-top-5">
+    <div class="usa-prose content-col grid-col-12">
+      <div class="font-sans-xs">
+      
+ 
+
+
+<hr>
+<h2 style="text-align: center;">High-Energy Missions</h2>
+<hr>
+
+<div class="missions-page-container">
+  
+<!--================================================================-->
+
+<p>Pictures from many of these high-energy astrophysics missions are available from
+the HEASARC&rsquo;s <a class="usa-link" href="images/pretty_pictures.html"> 
+&ldquo;Pretty Pictures&rdquo;</a> page.</p>
+
+<p>Color codes indicate completed/past (<font color="#0076d6">blue</font>),
+  active/current (<font color="#719f2a">green</font>), and future (<font color="#c2850c">gold</font>).
+  Missions tagged with &ldquo;HEASARC&rdquo; indicate missions where catalogs and/or data are
+  available (or, for future missions, will be available) at the HEASARC.</p>
+
+<!--================================================================-->
+<hr><p>
+
+<div class="results-info" id="resultsInfo">Showing all items</div>
+<div class="filter-controls">
+    <div class="filter-group">
+        <span class="filter-label">Sort By</span>
+        <select id="sortSelect">
+            <option value="name-asc">Name A-Z</option>
+            <option value="name-desc">Name Z-A</option>
+            <option value="date-asc">Launch Date (Oldest)</option>
+            <option value="date-desc">Launch Date (Newest)</option>
+            <option value="energy-asc">Minimum Energy (Lowest)</option>
+            <option value="energy-desc">Minimum Energy (Highest)</option>
+        </select>
+    </div>
+    
+    <div class="filter-group">
+        <span class="filter-label">Energy Category</span>
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="euve">EUVE</option>
+            <option value="xray">X-ray</option>
+            <option value="gamma">Gamma ray</option>
+            <option value="particle">Particle</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <span class="filter-label">Mission Status</span>
+        <select id="statusFilter">
+            <option value="all">All Status</option>
+            <option value="current">Active</option>
+            <option value="past">Completed</option>
+            <option value="future">Future</option>
+        </select>
+    </div>
+
+    <div class="filter-group">
+        <span class="filter-label">Decade</span>
+        <select id="decadeFilter">
+            <option value="all">All Decades</option>
+            <option value="1960">1960s</option>
+            <option value="1970">1970s</option>
+            <option value="1980">1980s</option>
+            <option value="1990">1990s</option>
+            <option value="2000">2000s</option>
+            <option value="2010">2010s</option>
+            <option value="2020">2020s</option>
+            <option value="2030">2030s and later</option>
+        </select>
+    </div>
+    
+    <button class="clear-btn" onclick="clearAllFilters()">Clear All</button>
+</div> <!-- End Filter Controls -->
+
+    <div id="itemContainer">
+        <div class="item category-xray category-past" 
+             data-name="ABRIXAS" 
+             data-date="1999-04-28" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.500"
+             data-decade="1990">
+	  <h3><a class="usa-link" href="abrixas.html">ABRIXAS</a></h3>
+        </div>
+
+       <div class="item category-gamma category-past" 
+             data-name="AGILE" 
+             data-date="2007-04-23" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="15.000"
+             data-decade="2000">
+            <h3><a class="usa-link" href="agile.html">AGILE</a></h3>
+        </div>
+
+        <div class="item category-euve category-past" 
+             data-name="alexis" 
+             data-date="1993-07-01" 
+             data-category="euve" 
+             data-status="past"
+             data-energy="66.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="alexis.html">ALEXIS</a></h3>
+        </div>
+        <div class="item category-particle category-current category-heasarc" 
+             data-name="ams" 
+             data-date="2011-05-19" 
+             data-category="particle" 
+             data-status="current"
+             data-energy="100"
+             data-decade="2010">
+            <!--<h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/ams/ams.html">AMS-02</a></h3> GOF IN DEVELOPMENT-->
+            <h3><a class="usa-link" href="ams.html">AMS-02</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="ans" 
+             data-date="1974-08-30" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.1"
+             data-decade="1970">
+            <!--<h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/ans/ans.html">ANS</a></h3> NO DATA or CATALOG, why GOF?-->
+            <h3><a class="usa-link" href="ans.html">ANS</a></h3>
+        </div>
+          <div class="item category-gamma category-past" 
+             data-name="apollo1516" 
+             data-date="1971-07-26" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="550"
+             data-decade="1970">
+            <h3><a class="usa-link" href="apollo1516.html">Apollo 15 &amp; 16</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="apollosoyuz" 
+             data-date="1975-07-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.180"
+             data-decade="1970">
+            <h3><a class="usa-link" href="apollosoyuz.html">Apollo-Soyuz</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="argos" 
+             data-date="1999-05-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="argos.html">ARGOS (USA)</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="ariel5" 
+             data-date="1974-10-15" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.300"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/ariel5/ariel5.html">Ariel V</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="ariel6" 
+             data-date="1979-06-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.25"
+             data-decade="1970">
+            <h3><a class="usa-link" href="ariel6.html">Ariel VI</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="aryabhata" 
+             data-date="1975-04-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="aryabhata.html">Aryabhata</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="asca" 
+             data-date="1993-02-20" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.400"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/asca/asca.html">ASCA</a></h3>
+        </div>
+        <div class="item category-euve category-future" 
+             data-name="aspera" 
+             data-date="2026-01-01" 
+             data-category="euve" 
+             data-status="future"
+             data-energy="0.012"
+             data-decade="2020">
+            <h3><a class="usa-link" href="aspera.html">Aspera</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="astroe" 
+             data-date="2000-02-10" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.200"
+             data-decade="2000">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/astroe/astroe.html">Astro E</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="astron" 
+             data-date="1983-04-03" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="astron.html">Astron</a></h3>
+        </div>
+        <div class="item category-xray category-current" 
+             data-name="astrosat" 
+             data-date="2015-10-01" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="0.3"
+             data-decade="2010">
+            <h3><a class="usa-link" href="astrosat.html">AstroSat</a></h3>
+        </div>
+        <div class="item category-xray category-future" 
+             data-name="athena" 
+             data-date="2034-01-01" 
+             data-category="xray" 
+             data-status="future"
+             data-energy="0.200"
+             data-decade="2030">
+            <h3><a class="usa-link" href="athena.html">ATHENA</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="bbxrt" 
+             data-date="1990-12-02" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.300"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/bbxrt/bbxrt.html">BBXRT</a></h3>
+        </div>
+        <div class="item category-xray category-current category-heasarc" 
+             data-name="blackcat" 
+             data-date="2026-01-11" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="0.500"
+             data-decade="2020">
+            <!--<h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/blackcat/">BlackCAT</a></h3> GOF pages in development -->
+            <h3><a class="usa-link" href="blackcat.html">BlackCAT</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="burstcube" 
+             data-date="2024-03-24" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/burstcube/burstcube.html">BurstCube</a></h3>
+        </div>
+        <div class="item category-particle category-current category-heasarc" 
+             data-name="calet" 
+             data-date="2015-10-01" 
+             data-category="particle" 
+             data-status="current"
+             data-energy="7.000"
+             data-decade="2010">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/calet/calet.html">CALET</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="cgro" 
+             data-date="1991-04-05" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/cgro/cgro.html">CGRO</a></h3>
+        </div>
+        <div class="item category-xray category-current category-heasarc" 
+             data-name="chandra" 
+             data-date="1999-07-23" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="0.1"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/chandra/chandra.html">Chandra (AXAF)</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="copernicus" 
+             data-date="1972-08-21" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.700"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/copernicus/copernicus.html">Copernicus (OAO-3)</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="cosb" 
+             data-date="1975-08-09" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="30.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/cosb/cosb.html">COS-B</a></h3>
+        </div>
+        <div class="item category-gamma category-future category-heasarc" 
+             data-name="cosi" 
+             data-date="2027-08-01" 
+             data-category="gamma" 
+             data-status="future"
+             data-energy="200"
+             data-decade="2020">
+            <!--<h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/cosi/cosi.html">COSI</a></h3> COSI GOF in development-->
+            <h3><a class="usa-link" href="cosi.html">COSI</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="cosmos" 
+             data-date="1965-03-12" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="100"
+             data-decade="1960">
+            <h3><a class="usa-link" href="cosmos.html">Cosmos series</a></h3>
+        </div>
+        <div class="item category-particle category-current" 
+             data-name="dampe" 
+             data-date="2015-12-17" 
+             data-category="particle" 
+             data-status="current"
+             data-energy="5000"
+             data-decade="2010">
+            <h3><a class="usa-link" href="dampe.html">DAMPE </a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="discoverer" 
+             data-date="1961-01-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="discoverer.html">Discoverer series</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="dmsp" 
+             data-date="1987-06-20" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20"
+             data-decade="1980">
+            <h3><a class="usa-link" href="dmsp.html">DMSP series</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="dxs" 
+             data-date="1993-01-13" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.150"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/dxs/dxs.html">DXS</a></h3>
+        </div>
+        <div class="item category-current category-xray" 
+             data-name="einstein_probe" 
+             data-date="2024-01-09" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="0.500"
+             data-decade="2020">
+            <h3><a class="usa-link" href="einstein_probe.html">Einstein Probe</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="esro2b" 
+             data-date="1968-05-17" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="1000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="esro2b.html">ESRO-2B</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="eureca" 
+             data-date="1992-08-07" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="6.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="eureca.html">EURECA</a></h3>
+        </div>
+        <div class="item category-particle category-past" 
+             data-name="euso_spb" 
+             data-date="2017-04-24" 
+             data-category="particle" 
+             data-status="past"
+             data-energy="10000000000"
+             data-decade="2010">
+            <h3><a class="usa-link" href="euso_spb.html">EUSO SPB</a></h3>
+        </div>
+        <div class="item category-euve category-past category-heasarc" 
+             data-name="euve" 
+             data-date="1992-06-07" 
+             data-category="euve" 
+             data-status="past"
+             data-energy="0.02"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/euve/euve.html">EUVE</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="exosat" 
+             data-date="1983-05-26" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.050"
+             data-decade="1980">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/exosat/exosat.html">EXOSAT</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="explorer11" 
+             data-date="1969-04-27" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50000.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="explorer11.html">Explorer 11</a></h3>
+        </div>
+        <div class="item category-xray category-future" 
+             data-name="extp" 
+             data-date="2027-01-01" 
+             data-category="xray" 
+             data-status="future"
+             data-energy="0.500"
+             data-decade="2020">
+            <h3><a class="usa-link" href="extp.html">eXTP</a></h3>
+        </div>
+        <div class="item category-gamma category-current category-heasarc" 
+             data-name="fermi" 
+             data-date="2008-06-11" 
+             data-category="gamma" 
+             data-status="current"
+             data-energy="10.000"
+             data-decade="2000">
+            <h3><a class="usa-link" href="fermi.html">Fermi</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="gamma" 
+             data-date="1990-07-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50000.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="gamma.html">Gamma</a></h3>
+        </div>
+        <div class="item category-gamma category-current" 
+             data-name="gecam" 
+             data-date="2020-01-01" 
+             data-category="gamma" 
+             data-status="current"
+             data-energy="8.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="gecam.html">GECAM</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="ginga" 
+             data-date="1987-02-05" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/ginga/ginga.html">Ginga</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="glowbug" 
+             data-date="2023-03-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="30.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="glowbug.html">Glowbug</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="granat" 
+             data-date="1989-12-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="0.030"
+             data-decade="1980">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/granat/granat.html">Granat</a></h3>
+        </div>
+        <div class="item category-gamma category-current" 
+             data-name="grbalpha" 
+             data-date="2021-03-21" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="70.0"
+             data-decade="2020">
+            <h3><a class="usa-link" href="grbalpha.html">GRB Alpha</a></h3>
+        </div>
+        <div class="item category-gamma category-current" 
+             data-name="grbbeta" 
+             data-date="2024-07-09" 
+             data-category="gamma" 
+             data-status="current"
+             data-energy="70.0"
+             data-decade="2020">
+            <h3><a class="usa-link" href="grbbeta.html">GRB Beta</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="hakucho" 
+             data-date="1979-02-21" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.100"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/hakucho/hakucho.html">Hakucho</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="halosat" 
+             data-date="2018-10-15" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.400"
+             data-decade="2010">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/halosat/halosat.html">HaloSat</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc"  
+             data-name="heao1" 
+             data-date="1977-08-12" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.250"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/heao1/heao1.html">HEAO 1</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="heao2" 
+             data-date="1978-11-12" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.400"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/einstein/heao2.html">Einstein (HEAO 2)</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="heao3" 
+             data-date="1979-09-20" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/heao3/heao3.html">HEAO 3</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="helios2" 
+             data-date="1976-01-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="60.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="helios2.html">Helios 2</a></h3>
+        </div>
+        <div class="item category-particle category-future" 
+             data-name="herd" 
+             data-date="2027-01-01" 
+             data-category="particle" 
+             data-status="future"
+             data-energy="10000000000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="herd.html">HERD</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="hete2" 
+             data-date="2000-10-09" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="0.500"
+             data-decade="2000">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/hete2/hete2.html">HETE-2</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="hitomi" 
+             data-date="2016-02-17" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.300"
+             data-decade="2010">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/hitomi/hitomi.html">Hitomi (Astro-H)</a></h3>
+        </div>
+        <div class="item category-xray category-current" 
+             data-name="hxmt" 
+             data-date="2017-07-15" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="0.14"
+             data-decade="2010">
+            <h3><a class="usa-link" href="hxmt.html">HXMT - Insight</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="imp6" 
+             data-date="1971-03-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="53.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="imp6.html">IMP 6</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="imp7" 
+             data-date="1972-10-14" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="53.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="imp7.html">IMP 7</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="integral" 
+             data-date="2002-10-17" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="2000">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/integral/integral.html">INTEGRAL</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="irsp3" 
+             data-date="1996-07-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="irsp3.html">IRS-P3</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="isee3" 
+             data-date="1978-08-12" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="5.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="isee3.html">ISEE-3</a></h3>
+        </div>
+        <div class="item category-xray category-current category-heasarc" 
+             data-name="ixpe" 
+             data-date="2021-12-09" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="2.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="ixpe.html">IXPE</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="kvant" 
+             data-date="1987-04-12" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="kvant.html">Kvant</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="legri" 
+             data-date="1997-04-21" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="10.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="legri.html">Minisat 1 (LEGRI)</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="lobstereye1" 
+             data-date="2020-07-25" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.400"
+             data-decade="2020">
+            <h3><a class="usa-link" href="lobstereye1.html">Lobster Eye 1</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="lomonosov" 
+             data-date="2016-04-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="5.000"
+             data-decade="2010">
+            <h3><a class="usa-link" href="lomonosov.html">Lomonosov</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="luna1012" 
+             data-date="1966-03-31" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="300"
+             data-decade="1960">
+            <h3><a class="usa-link" href="luna1012.html">Luna 10 &amp; 12</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="mars45" 
+             data-date="1973-07-21" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="1000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="mars45.html">Mars 4 &amp; 5</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="marsobs" 
+             data-date="1992-07-25" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="500"
+             data-decade="1990">
+            <h3><a class="usa-link" href="marsobs.html">Mars Observer</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="maxi" 
+             data-date="2009-07-15" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="2.000"
+             data-decade="2000">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/maxi/maxi.html">MAXI</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="near" 
+             data-date="1996-02-17" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="near.html">NEAR</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="nicer" 
+             data-date="2017-06-14" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.200"
+             data-decade="2010">
+            <h3><a class="usa-link" href="nicer.html">NICER</a></h3>
+        </div>
+        <div class="item category-xray category-current category-heasarc" 
+             data-name="nustar" 
+             data-date="2012-06-13" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="3.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="nustar.html">NuSTAR</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="ogo" 
+             data-date="1964-01-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="80"
+             data-decade="1960">
+            <h3><a class="usa-link" href="ogo.html">OGO series</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="ors3" 
+             data-date="1965-07-20" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="30"
+             data-decade="1960">
+            <h3><a class="usa-link" href="ors3.html">ORS 3</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="ors4" 
+             data-date="1967-04-28" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="250"
+             data-decade="1960">
+            <h3><a class="usa-link" href="ors4.html">ORS 4</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="oso1" 
+             data-date="1962-03-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="oso1.html">OSO 1</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="oso3" 
+             data-date="1967-03-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="7.700"
+             data-decade="1960">
+            <h3><a class="usa-link" href="oso3.html">OSO 3</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="oso4" 
+             data-date="1967-10-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="8.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="oso4.html">OSO 4</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="oso5" 
+             data-date="1969-01-22" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="14.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="oso5.html">OSO 5</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="oso6" 
+             data-date="1969-08-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="27.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="oso6.html">OSO 6</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="oso7" 
+             data-date="1971-09-29" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/oso7/oso7.html">OSO 7</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="oso8" 
+             data-date="1975-06-21" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/oso8/oso8.html">OSO 8</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="p78_1" 
+             data-date="1979-02-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="3.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="p78_1.html">P78-1</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="phobos1" 
+             data-date="1988-07-07" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="300"
+             data-decade="1980">
+            <h3><a class="usa-link" href="phobos1.html">Phobos 1</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="phobos2" 
+             data-date="1988-07-12" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="300"
+             data-decade="1980">
+            <h3><a class="usa-link" href="phobos2.html">Phobos 2</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="polar" 
+             data-date="2016-09-22" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50.000"
+             data-decade="2010">
+            <h3><a class="usa-link" href="polar.html">Polar</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="polarlight" 
+             data-date="2018-10-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="2010">
+            <h3><a class="usa-link" href="polarlight.html">Polarlight</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="prognoz2" 
+             data-date="1972-06-29" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="400"
+             data-decade="1970">
+            <h3><a class="usa-link" href="prognoz2.html">Prognoz 2</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="prognoz6" 
+             data-date="1977-09-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="prognoz6.html">Prognoz 6</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="prognoz7" 
+             data-date="1978-10-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="prognoz7.html">Prognoz 7</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="prognoz9" 
+             data-date="1983-07-02" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="40.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="prognoz9.html">Prognoz 9</a></h3>
+        </div>
+        <div class="item category-particle category-past" 
+             data-name="proton" 
+             data-date="1965-07-01" 
+             data-category="particle" 
+             data-status="past"
+             data-energy="50000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="proton.html">Proton 1 &amp; 2</a></h3>
+        </div>
+        <div class="item category-particle category-current category-heasarc" 
+             data-name="pueo" 
+             data-date="2025-12-19" 
+             data-category="particle" 
+             data-status="past"
+             data-energy="1000000000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="pueo.html">PUEO</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="pvo" 
+             data-date="1978-05-21" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="100.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="pvo.html">Pioneer Venus</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="radsat" 
+             data-date="1972-10-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="40.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="radsat.html">Radsat</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="ranger" 
+             data-date="1962-01-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="ranger.html">Ranger 3 &amp; 5</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="rosat" 
+             data-date="1990-06-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.100"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/rosat/rosat.html">ROSAT</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="rxte" 
+             data-date="1995-12-30" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/xte/rxte.html">RXTE</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="salyut4" 
+             data-date="1975-01-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.200"
+             data-decade="1970">
+            <h3><a class="usa-link" href="salyut4.html">Salyut-4</a></h3>
+        </div>
+        <div class="item category-gamma category-past category-heasarc" 
+             data-name="sas2" 
+             data-date="1972-11-19" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20000.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/sas2/sas2.html">SAS 2</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="sas3" 
+             data-date="1975-05-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/sas3/sas3.html">SAS 3</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="signe3" 
+             data-date="1977-06-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="signe3.html">SIGNE 3</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="skylab" 
+             data-date="1973-05-01" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="skylab.html">Skylab</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="solarmax" 
+             data-date="1980-02-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="30.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="solarmax.html">Solar Max</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="solrad10" 
+             data-date="1971-07-08" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="solrad10.html">Solrad 10</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="solrad11" 
+             data-date="1976-03-15" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="0.200"
+             data-decade="1970">
+            <h3><a class="usa-link" href="solrad11.html">Solrad 11A/B</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="spacelab1" 
+             data-date="1983-11-28" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="spacelab1.html">Spacelab 1</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="spacelab2" 
+             data-date="1985-07-29" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.500"
+             data-decade="1980">
+            <h3><a class="usa-link" href="spacelab2.html">Spacelab 2</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="spartan1" 
+             data-date="1985-06-20" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="1.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="spartan1.html">Spartan 1</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="srg" 
+             data-date="2019-12-08" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.200"
+             data-decade="2010">
+            <h3><a class="usa-link" href="srg.html">SRG </a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="sross3" 
+             data-date="1992-05-25" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="sross3.html">SROSS</a></h3>
+        </div>
+        <div class="item category-xray category-future category-heasarc" 
+             data-name="starburst" 
+             data-date="2027-01-01" 
+             data-category="xray" 
+             data-status="future"
+             data-energy="30.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="starburst.html">StarBurst</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="suzaku" 
+             data-date="2005-07-10" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.200"
+             data-decade="2000">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/astroe/astroe2.html">Suzaku (Astro E2)</a></h3>
+        </div>
+        <div class="item category-xray category-current" 
+             data-name="svom" 
+             data-date="2024-06-24" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="4.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="svom.html">SVOM</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="swift" 
+             data-date="2004-11-20" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="15.000"
+             data-decade="2000">
+            <h3><a class="usa-link" href="swift.html">Swift</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="taranis" 
+             data-date="2020-11-16" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="20.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="taranis.html">TARANIS</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="td1a" 
+             data-date="1972-03-11" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="3.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="td1a.html">TD-1A</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="tenma" 
+             data-date="1983-02-20" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/tenma/tenma.html">Tenma</a></h3>
+        </div>
+        <div class="item category-particle category-future category-heasarc"
+             data-name="tigeriss" 
+             data-date="2027-08-31" 
+             data-category="particle" 
+             data-status="future"
+             data-energy="325000"
+             data-decade="2020">
+            <!--<h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/tigeriss/tigeriss.html">TigerISS</a></h3> GOF pages in developement-->
+            <h3><a class="usa-link" href="tigeriss.html">TigerISS</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="uhuru" 
+             data-date="1970-12-12" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="2.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/uhuru/uhuru.html">Uhuru</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="ulysses" 
+             data-date="1990-11-09" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="15.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="ulysses.html">Ulysses</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="vela5a" 
+             data-date="1969-05-23" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="3.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="vela5a.html">Vela 5A</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="vela5b" 
+             data-date="1969-05-23" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="3.000"
+             data-decade="1960">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/vela5b/vela5b.html">Vela 5B</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="vela6" 
+             data-date="1970-04-08" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="3.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="vela6.html">Vela 6A/B</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="venera1112" 
+             data-date="1978-09-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50.000"
+             data-decade="1970">
+            <h3><a class="usa-link" href="venera1112.html">Venera 11 &amp; 12</a></h3>
+        </div>
+        <div class="item category-gamma category-past" 
+             data-name="venera1314" 
+             data-date="1981-10-01" 
+             data-category="gamma" 
+             data-status="past"
+             data-energy="50.000"
+             data-decade="1980">
+            <h3><a class="usa-link" href="venera1314.html">Venera 13 &amp; 14</a></h3>
+        </div>
+        <div class="item category-gamma category-current" 
+             data-name="vzlusat2" 
+             data-date="2022-01-22" 
+             data-category="gamma" 
+             data-status="current"
+             data-energy="30.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="vzlusat2.html">VZLUSat-2</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="wass" 
+             data-date="1972-12-08" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.100"
+             data-decade="1970">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/rockets/wass.html">WASS</a></h3>
+        </div>
+        <div class="item category-gamma category-current" 
+             data-name="wind" 
+             data-date="1994-01-01" 
+             data-category="gamma" 
+             data-status="current"
+             data-energy="15.000"
+             data-decade="1990">
+            <h3><a class="usa-link" href="wind.html">Wind</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="xlcalibur" 
+             data-date="2022-07-11" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="15.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/xlcalibur/">XL-Calibur </a></h3>
+        </div>
+        <div class="item category-xray category-current category-heasarc" 
+             data-name="xmm" 
+             data-date="1999-12-10" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="0.100"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/xmm/xmm.html">XMM-Newton</a></h3>
+        </div>
+        <div class="item category-xray category-past" 
+             data-name="xpnav1" 
+             data-date="2016-11-10" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.500"
+             data-decade="2010">
+            <h3><a class="usa-link" href="xpnav1.html">XPNAV-1</a></h3>
+        </div>
+        <div class="item category-xray category-current" 
+             data-name="xposat" 
+             data-date="2024-01-01" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="8.000"
+             data-decade="2020">
+            <h3><a class="usa-link" href="xposat.html">XPoSat</a></h3>
+        </div>
+        <div class="item category-xray category-past category-heasarc" 
+             data-name="xqc" 
+             data-date="1995-12-04" 
+             data-category="xray" 
+             data-status="past"
+             data-energy="0.100"
+             data-decade="1990">
+            <h3><a class="usa-link" href="https://heasarc.gsfc.nasa.gov/docs/rockets/xqc.html">XQC</a></h3>
+        </div>
+        <div class="item category-xray category-current category-heasarc" 
+             data-name="xrism" 
+             data-date="2023-10-01" 
+             data-category="xray" 
+             data-status="current"
+             data-energy="1.700"
+             data-decade="2020">
+            <h3><a class="usa-link" href="xrism.html">XRISM</a></h3>
+        </div>
+    </div>
+    
+    <script>
+        class ItemFilter {
+            constructor(containerSelector, itemSelector) {
+                this.container = document.querySelector(containerSelector);
+                this.items = Array.from(document.querySelectorAll(itemSelector));
+                this.originalOrder = [...this.items];
+                this.activeFilters = {};
+                this.resultsInfo = document.getElementById('resultsInfo');
+            }
+
+            applyFilters() {
+                let filteredItems = this.items.filter(item => {
+                    // Category filter
+                    if (this.activeFilters.category && this.activeFilters.category !== 'all') {
+                        const itemCategory = item.getAttribute('data-category');
+                        if (itemCategory !== this.activeFilters.category) return false;
+                    }
+
+                    // Status filter
+                    if (this.activeFilters.status && this.activeFilters.status !== 'all') {
+                        const itemStatus = item.getAttribute('data-status');
+                        if (itemStatus !== this.activeFilters.status) return false;
+                    }
+
+                   // Decade filter
+                  if (this.activeFilters.decade && this.activeFilters.decade !== 'all') {
+                      const itemDecade = item.getAttribute('data-decade');
+                      if (itemDecade !== this.activeFilters.decade) return false;
+                  }
+
+	          return true;
+                });
+
+                // Apply sorting
+                if (this.activeFilters.sort) {
+                    filteredItems = this.sortItems(filteredItems, this.activeFilters.sort);
+                }
+
+                // Update display
+                this.updateDisplay(filteredItems);
+                this.updateResultsInfo(filteredItems.length);
+            }
+
+            sortItems(items, sortType) {
+                return items.sort((a, b) => {
+                    switch(sortType) {
+                        case 'name-asc':
+                            return a.getAttribute('data-name').localeCompare(b.getAttribute('data-name'));
+                        case 'name-desc':
+                            return b.getAttribute('data-name').localeCompare(a.getAttribute('data-name'));
+                        case 'date-asc':
+                            return new Date(a.getAttribute('data-date')) - new Date(b.getAttribute('data-date'));
+                        case 'date-desc':
+                            return new Date(b.getAttribute('data-date')) - new Date(a.getAttribute('data-date'));
+                        case 'energy-asc':
+                            return parseFloat(a.getAttribute('data-energy')) - parseFloat(b.getAttribute('data-energy'));
+                        case 'energy-desc':
+                            return parseFloat(b.getAttribute('data-energy')) - parseFloat(a.getAttribute('data-energy'));
+                        default:
+                            return 0;
+                    }
+                });
+            }
+
+            updateDisplay(items) {
+                this.container.innerHTML = '';
+                
+                if (items.length === 0) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results';
+                    noResults.innerHTML = `
+                        <h3>No items found</h3>
+                        <p>Try adjusting your filters</p>
+                    `;
+                    this.container.appendChild(noResults);
+                } else {
+                    items.forEach(item => {
+                        this.container.appendChild(item);
+                    });
+                }
+            }
+
+            updateResultsInfo(count) {
+                const total = this.items.length;
+                if (count === total) {
+                    this.resultsInfo.textContent = `Showing all ${total} items`;
+                } else {
+                    this.resultsInfo.textContent = `Showing ${count} of ${total} items`;
+                }
+            }
+
+            setCategoryFilter(category) {
+                this.activeFilters.category = category;
+                this.applyFilters();
+            }
+
+            setStatusFilter(status) {
+                this.activeFilters.status = status;
+                this.applyFilters();
+            }
+
+            setDecadeFilter(decade) {
+                this.activeFilters.decade = decade;
+                this.applyFilters();
+	    }
+	
+            setSortOrder(sortType) {
+                this.activeFilters.sort = sortType;
+                this.applyFilters();
+            }
+
+            clearAllFilters() {
+                this.activeFilters = {};
+                
+                // Reset all form controls (removed filterInput reference)
+                document.getElementById('categoryFilter').value = 'all';
+                document.getElementById('statusFilter').value = 'all';
+                document.getElementById('sortSelect').value = 'name-asc';
+                document.getElementById('decadeFilter').value = 'all'; 
+                    
+                // Show all items in original order
+                this.updateDisplay(this.originalOrder);
+                this.updateResultsInfo(this.items.length);
+            }
+        }
+
+        // Initialize the filter system when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const itemFilter = new ItemFilter('#itemContainer', '.item');
+
+            document.getElementById('categoryFilter').addEventListener('change', function(e) {
+                itemFilter.setCategoryFilter(e.target.value);
+            });
+
+            document.getElementById('statusFilter').addEventListener('change', function(e) {
+                itemFilter.setStatusFilter(e.target.value);
+            });
+
+            document.getElementById('sortSelect').addEventListener('change', function(e) {
+                itemFilter.setSortOrder(e.target.value);
+            });
+
+	    document.getElementById('decadeFilter').addEventListener('change', function(e) {
+                itemFilter.setDecadeFilter(e.target.value);
+            });
+
+            // Make clearAllFilters function globally available
+            window.clearAllFilters = function() {
+                itemFilter.clearAllFilters();
+            };
+
+            // Initialize with default sort
+            itemFilter.setSortOrder('name-asc');
+        });
+    </script>
+
+</div> <!--End of mission page container -->
+
+<hr>
+<h2>High-Energy Mission Network </h2>
+<hr>
+
+<ul class="usa-list usa-list--unstyled">
+<li><a class="usa-link" href="ipn.html">
+    <b>Interplanetary Gamma-Ray Burst Timing Network</b></a></li>
+</ul>
+  
+<p>Information on other non high-energy missions is available at the 
+<a class="usa-link" href="http://nssdc.gsfc.nasa.gov/astro/">NSSDC</a>.</p>
+
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    <a href="past.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Past Missions at HEASARC
+    </a>
+    <a href="active.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Current Missions
+    </a>
+    <a href="future.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Upcoming Missions
+    </a>
+    <a href="concepts.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Mission Concepts
+    </a>
+    <a href="comparison.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+       Mission Comparisons
+    </a>
+  </div>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+</div><!-- end font-sans-2xs -->
+</div><!-- end content-col -->
+</div><!-- end .grid-row grid-gap-->
+</div><!-- end .grid-container-->
+</main><!-- end id="main-content" -->
+
+<footer class="usa-footer usa-footer--slim margin-top-auto">
+	<div class="grid-container usa-footer__return-to-top">
+		<a href="#" class="usa-link">Return to top</a>
+	</div>
+
+	<div class="usa-footer__primary-section usa-dark-background bg-ink">
+		<div class="usa-footer__primary-container grid-row">
+			<div class="mobile-lg:grid-col">
+				<nav class="usa-footer__nav" aria-label="Footer navigation,">
+					<ul class="grid-row grid-gap">
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/">HEASARC</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/observatories.html">Observatories</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/archive.html">Archive</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/heasarc/caldb/caldb_intro.html">Calibration</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/software.html">Software</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/docs/tools.html">Web Tools</a>
+						</li>
+						<li class="mobile-lg:grid-col-6 desktop:grid-col-auto usa-footer__primary-content">
+							<a class="usa-footer__primary-link" href="https://heasarc.gsfc.nasa.gov/cgi-bin/Feedback">Help &amp; Support</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+	</div>
+  <div class="usa-dark-background bg-ink padding-bottom-2">
+    <div class="grid-container padding-2 font-sans-2xs">
+      <div class="usa-footer__logo grid-row">
+        <div class="grid-col-2 display-none tablet:display-block">
+          <img class="width-12" src="https://heasarc.gsfc.nasa.gov/docs/images/nasa-logo.svg" alt="NASA logo" />
+        </div>
+        <div class="grid-col-12 desktop:grid-col-2">
+          <ul class="usa-list usa-list--unstyled">
+            <li><a class="usa-link--external" href="https://www.nasa.gov/about/">About NASA</a></li>
+            <li><a class="usa-link--external" href="https://www.nasa.gov/accessibility/">Accessibility</a></li>
+					  <li><a class="usa-link--external" href="https://www.nasa.gov/foia/">FOIA</a></li>
+          </ul>
+        </div>
+        <div class="grid-col-12 desktop:grid-col-3">
+          <ul class="usa-list usa-list--unstyled text-base-lightest">
+            <li>
+              <a class="usa-link--external" href="https://www.nasa.gov/odeo/no-fear-act/">No FEAR Act</a>
+            </li>
+            <li>
+              <a class="usa-link--external" href="https://www.nasa.gov/privacy/">Privacy Policy</a>
+            </li>
+            <li>
+              <a class="usa-link--external" href="https://www.nasa.gov/vulnerability-disclosure-policy/">Vulnerability Disclosure Policy</a>
+            </li>
+          </ul>
+        </div>
+        <div class="grid-col-12 desktop:grid-col-1"></div>
+        <div class="grid-col-12 desktop:grid-col-4">
+          <ul class="usa-list usa-list--unstyled text-base-lightest">
+            <li>
+              Responsible Official: <a class="usa-link" href="mailto:ryan.smallcomb@nasa.gov">Ryan Smallcomb</a>
+            </li>
+            <li>
+              Site Editor: <a class="usa-link" href="mailto:kristen.m.killingsworth@nasa.gov">Kristen Killingsworth</a>
+            </li>
+            <li>
+              Last Updated: 20-Feb-2026
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-row text-base-lightest">
+        <div class="tablet:grid-col-2"></div>
+        <div class="tablet:grid-col-10">
+          A service of the
+          <a class="padding-x-05 usa-link--external" href="https://science.gsfc.nasa.gov/astrophysics">Astrophysics Science Division</a>
+          at <a class="padding-x-05 usa-link--external" href="https://www.nasa.gov/goddard/">NASA/GSFC</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
+
+
+
+

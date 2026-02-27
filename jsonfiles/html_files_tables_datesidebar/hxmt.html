@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>HXMT</title>
+<meta name="orgcode" content="660">
+<meta name="keywords" content="high-energy, archive, data, astronomy data, x-ray astronomy, 
+    gamma-ray astronomy, instrument, mission, observatory, software, high energy, science, xray, 
+    x-ray, gamma ray, gamma-ray, extreme ultraviolet, EUV, astrophysics, astronomy, analysis, 
+    research">
+
+<!--#include virtual="/includes/uswds-header-no-sidenav.html"-->
+
+<div class="grid-container">
+<div class="grid-row grid-gap">
+  <div class="grid-col-12 tablet:grid-col-3">
+<!--#include virtual="/docs/heasarc/missions/uswds-missions-dates-2010s.html"-->
+    </div>
+    <div class="grid-col-12 tablet:grid-col-9 usa-prose">
+
+<hr>
+<h2>HXMT - Insight</h2>
+<hr>
+
+<!--Isolate the float right image to wrap without breaking the USWDS grid-->
+<div style="overflow: hidden;">
+  <img alt="Artistic impression of HXMT"
+       style="float:right; margin: 0 0 12px 12px; width: 300px;"
+       src="/Images/hxmt/hxmt.jpg">
+
+The Hard X-ray Modulation Telescope (HXMT), also known as Insight, is a Chinese X-ray observatory launched on 15 June, 2017 aboard a Long March 4B rocket from the Jiuquan Satellite Launch Center. The mission provides high resolution imagery across a wide spectrum of X-ray energies.
+  
+
+<h3>Mission Characteristics</h3>
+
+<table class="usa-table--borderless">
+<tbody>  
+<tr><td class="padding-right-3 text-top"><strong>Lifetime</strong></td>
+    <td class="text-top">2017&ndash;</td>
+</tr>
+<tr><td class="padding-right-3 text-top"><strong>Special Features</strong></td>
+    <td class="text-top">
+        <ul class="usa-list usa-list--unstyled">
+            <li class="padding-bottom-1">China&rsquo;s first dedicated X-ray astronomy mission</li>
+            <li class="padding-bottom-1">Combination of large field of view with wide-area coverage and good sensitivy by using modulation collimation</li>
+        </ul>
+    </td></tr>
+</tbody
+</table>
+
+<h3>Payload</h3>
+
+<!--Use local mission table class for less generous spacing and font than USWDS default-->
+<table class="usa-table usa-hea-mission-table">
+   <colgroup>
+     <col style="width: 20%;">
+     <col style="width: 20%;">
+     <col style="width: 60%;">
+  </colgroup>
+<thead>
+ <tr><th>Instrument</th>
+     <th>Characteristic</th>
+     <th>Details</th>
+ </tr>
+ </thead>
+ <tbody>
+<tr><th rowspan="7">Low Energy (LE) instrument</th>
+    <td><strong>Energy Range</strong></td>
+    <td>1&ndash;12 keV</td>
+</tr>
+<tr><td><strong>Effective Area</strong></td>
+    <td>384 cm<sup>2</sup></td>
+</tr>
+<tr><td><strong>Field of View</strong></td>
+    <td>1.6&deg; &times; 6&deg;<br>4&deg; &times; 6&deg;<br>60&deg; &times; 6&deg;</td>
+</tr>
+<tr><td><strong>Angular Resolution</strong></td>
+    <td>1&prime;</td>
+</tr>
+<tr><td><strong>Energy Resolution</strong></td>
+    <td>140 eV at 5.9 keV (FWHM)</td>
+</tr>
+<tr><td><strong>Time Resolution</strong></td>
+    <td>0.98 ms</td>
+</tr>
+<tr><td colspan="2">The LE contains three detector boxes with Swept Charge Devices (SCD) which work in a continuous read-out mode, in contrast to more traditional CCD detectors with fixed exposures times, giving it greater time resolution. Each box contains 30 fields-of-view: 21 with 1.6&deg; &times; 6&deg; (with one blocked for background measurements), 7 with 4&deg; &times; 6&deg; (with one block) and two with 50&ndash;60&deg; &times; 2&ndash;6&deg;. The three boxes are set 120 degrees apart from each other, so signals from each can reconstruct image information through demodulation.</td></tr>
+  <tr><th rowspan="7">Medium Energy (ME) instrument</th>
+    <td><strong>Energy Range</strong></td>
+    <td>5&ndash;30 keV</td>
+</tr>
+<tr><td><strong>Effective Area</strong></td>
+    <td>952 cm<sup>2</sup></td>
+</tr>
+<tr><td><strong>Field of View</strong></td>
+    <td>1&deg; &times; 4&deg;<br>4&deg; &times; 4&deg;</td>
+</tr>
+<tr><td><strong>Angular Resolution</strong></td>
+    <td>1&prime;</td>
+</tr>
+<tr><td><strong>Energy Resolution</strong></td>
+    <td>15% at 20 keV (FWHM)</td>
+</tr>
+<tr><td><strong>Time Resolution</strong></td>
+    <td>240 &micro;s</td>
+</tr>
+<tr><td colspan="2">The ME uses 1728 Silicon-PIN diodes for detecting X-rays. The instrument is divided into three detector groups: the first has a 1&deg; &times; 4&deg; FOV, a second with 4&deg; &times; 4&deg; FOV for background measurement, and a third fully blocked module for assessing dark current noise contributions to any detected signal.</td></tr>
+  <tr><th rowspan="7">High Energy (HE) instrument</th>
+    <td><strong>Energy Range</strong></td>
+    <td>20&ndash;350 keV</td>
+</tr>
+<tr><td><strong>Effective Area</strong></td>
+    <td>5100 cm<sup>2</sup> (combined)</td>
+</tr>
+<tr><td><strong>Field of View</strong></td>
+    <td>1.1&deg; &times; 5.7&deg;<br>5.7&deg; &times; 5.7&deg;</td>
+</tr>
+<tr><td><strong>Angular Resolution</strong></td>
+    <td>1&prime;</td>
+</tr>
+<tr><td><strong>Energy Resolution</strong></td>
+    <td>&le;17% at 60 keV</td>
+</tr>
+<tr><td><strong>Time Resolution</strong></td>
+    <td>4 &micro;s</td>
+</tr>
+<tr><td colspan="2">The HE consists of two concentric rings of 18 total NaI/CsI phosphor sandwich (phoswich) scintillation detectors with collimators for 1.1&deg; &times; 5.7&deg; FOV in different orientations (save for two detectors, with wider fields for background monitoring, and one with a tantalum shield for monitoring dark current background). The HE instruments can perform simultaneous spectral, timing, and imaging operations .</td></tr>
+  </tbody>
+</table>
+  
+<h3>Science Goals</h3>
+
+<ul class="usa-list usa-list--unstyled">
+<li class="padding-bottom-1">Scan the Galactic Plane to find new transient sources and to monitor the known variable sources</li>
+<li class="padding-bottom-1">Observe X-ray binaries to study the dynamics and emission mechanism in strong gravitational or magnetic fields</li>
+<li class="padding-bottom-1">Find and study Gamma Ray Burst sources with its anti-coincidence detectors</li>
+<li class="padding-bottom-1">Observe outburst events from black hole binaries</li>
+</ul>
+</div>
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    <a href="http://hxmten.ihep.ac.cn/"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+      HXMT at IHEP (China)
+    </a>
+    <a href="biblio/hxmt_biblio.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+      Publications
+    </a>
+  </div>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+ <!--#include virtual="/includes/uswds-footer.html"-->
+
+    
+	 
