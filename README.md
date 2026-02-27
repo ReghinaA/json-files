@@ -1,1 +1,1 @@
-https://reghinaa.github.io/json-files/finaljson/processed/allmissions.html is how to get to index.html, don't ask me why
+click this link https://reghinaa.github.io/json-files/finaljson/processed/allmissions.html to get to index.html
