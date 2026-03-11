@@ -1,8 +1,0 @@
-# created by virtualenv automatically
-__pycache__/
-*.pyc
-.DS_Store
-.idea/
-.venv/
-venv/
-allure-results/
