@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Glowbug</title>
+<meta name="orgcode" content="660">
+<meta name="keywords" content="high-energy, archive, data, astronomy data, x-ray astronomy, 
+    gamma-ray astronomy, instrument, mission, observatory, software, high energy, science, xray, 
+    x-ray, gamma ray, gamma-ray, extreme ultraviolet, EUV, astrophysics, astronomy, analysis, 
+    research">
+
+<!--#include virtual="/includes/uswds-header-no-sidenav.html"-->
+
+<hr>
+<h2>Glowbug</h2>
+<hr>
+
+<!--Isolate the float right image to wrap without breaking the USWDS grid-->
+<div style="overflow: hidden;">
+  <img alt="Schematic of Glowbug scintillators on ISS pedestal"
+       style="float:right; margin: 0 0 12px 12px; width: 300px;"
+       src="/Images/misc_missions/glowbug_schematic_square.png">
+
+<p><b><font size="+2">T</font>he Glowbug</b> mission was a gamma-ray telescope affixed to the International Space Station (ISS). It was launched on March 14, 2023, and installed on the Japanese Experiment Module Exposed Facility (JEM-EF). It began operations on March 20, and operated through April 2024. The mission was led by the Naval Research Laboratory through the Department of Defense Space Test Program and funded through the NASA Astrophysics Research and Analysis program. Its primary mission was to detect short gamma-ray burst (sGRBs) from binary neutron star and neutron star-black hole binary mergers. It was also a providing ground for a proposed future GAMERA SmallSat mission, the StarBurst Multimessenger Pioneers mission, and Glowbug-2 instrument.</p><p>The instrument had a wide field of view and was sensitive to gamma-rays in the 30 keV &ndash; 2 MeV range. The detector consisted of 12 CsI(Tl) detector panels arranged to allow reconstruction of burst location with modest accuracy. There were also a set of six Cs<sub>2</sub>LiLaBr<sub>6</sub>(Ce) (CLLB) cylindrical detectors to extend sensitive above &sim;1 MeV. Both detectors used silicon photomultipliers (SiPMs) to detect light from gamma-rays absorbed by the scintillation material. The SiPMs built on a heritage design successfully tested with the Strontium Iodide Radiation Instrumentation missions (SIRI-1 &amp; SIRI-2), as were mission and data acquisition systems. </p><p>The instrument sat on a pedestal to protrude above the ISS mounted on the zenithal side of the station, ideal for observing astronomical gamma-ray sources. However, Glowbug was also able to detect some terrestrial gamma-ray flashes.</p>
+  
+
+<h3>Mission Characteristics</h3>
+
+<table class="usa-table--borderless">
+<tbody>  
+<tr><td class="padding-right-3 text-top"><strong>Lifetime</strong></td>
+    <td class="text-top">Mar 2023&ndash;Apr 2024</td>
+</tr>
+<tr><td class="padding-right-3 text-top"><strong>Special Features</strong></td>
+    <td class="text-top">
+        <ul class="usa-list usa-list--unstyled">
+            <li class="padding-bottom-1">Mounted on the zenithal (sky-facing) side of the ISS with wide field of view. ISS mounting and integration allowed use of power systems and high bandwidth communications with limited onboard systems requirements.</li>
+            <li class="padding-bottom-1">Used heritage design and software for reduced cost and faster development.</li>
+            <li class="padding-bottom-1">Improved gamma-ray detector design permitted greater sensitivity than older designs.</li>
+        </ul>
+    </td></tr>
+</tbody
+</table>
+
+<h3>Payload</h3>
+
+<!--Use local mission table class for less generous spacing and font than USWDS default-->
+<table class="usa-table usa-hea-mission-table">
+   <colgroup>
+     <col style="width: 20%;">
+     <col style="width: 20%;">
+     <col style="width: 60%;">
+  </colgroup>
+<thead>
+ <tr><th>Instrument</th>
+     <th>Characteristic</th>
+     <th>Details</th>
+ </tr>
+ </thead>
+ <tbody>
+<tr><th rowspan="4">CiI(Tl) Gamma-ray Detector</th>
+    <td><strong>Energy Range</strong></td>
+    <td>&sim;30 keV &ndash; &sim;2 MeV</td>
+</tr>
+<tr><td><strong>Field of View</strong></td>
+    <td>&sim; 8 sr</td>
+</tr>
+<tr><td><strong>Angular Resolution</strong></td>
+    <td>&lt; 5&deg;</td>
+</tr>
+<tr><td colspan="2">A suite of 12 CsI(Tl) detectors provide an ultra-wide field of view of the unocculted sky (8 steridian). Each large-area detector panel was a 150 mm &times; 150 mm, 10 mm thick crystal, with a 1 &times; 21 array of 6 mm &times; 6 mm SiPMS used to read out the thin edge of the crystal. The SensL J-series SiPMs were flight-proven on the SIRI-1 mission. The individual detectors were arranged in bi-packs, arranged in pairs along the &plusnm;x and y axis, and with four on the +z (zenith-facing) side. The outward facing side of each panel had a thin aluminum window while the crystal was backed with a steel and tantalum shield which attenuated gamma rays below &sim;300 keV to stop photons entering the rear-facing side. Localization of bursts by maximum likelihood algorithms provided typical localization of &lt;5&deg; (compared to 10&deg; for comparable sGRBs with Fermi GBM) and roughly twice Fermi GBM&rsquo;s effective area with a typical sGRB spectrum. This expanded the horizon for faint objects in the local Universe by &sim;1.4 (and thus encompassed roughly 3 times Fermi GBM&rsquo;s detectable volume of space).</p></td></tr>
+  <tr><th rowspan="3">CLLB Gamma-ray Detector</th>
+    <td><strong>Energy Range</strong></td>
+    <td>&sim;30 keV &ndash; &sim;2 MeV</td>
+</tr>
+<tr><td><strong>Energy Resolution</strong></td>
+    <td>&lt;4% at 662 keV</td>
+</tr>
+<tr><td colspan="2">There were 6 Cs<sub>2</sub>LiLaBr<sub>6</sub>(Ce) cylindrical scintillation detectors in the interior of the detector (surrounded by the CsI(Tl) panels). These were a new type of detector: a secondary goal of the Glowbug mission was to flight-test the new technology. Each cylinder was 5 cm in diameter and 10 cm long with an array of 44 SensL J-series SiPM at one end. They had &lt;4% FWHM spectral resolution at 662 keV and were sensitive to thermal neutrons. They provided additional effective area to the total instrument above 1 MeV.</p></td></tr>
+  <tr><th rowspan="1">SAA Detector</th>
+     <td colspan="2">. The South Atlantic Anomaly detector consisted of a single 25 mm &times; 25 mm &times; 12 mm plastic scintillator cube with a 4 &times; 4 array of SiPM readouts. This detector remained on during transits of the SAA in order to detect entry and exit of the high radiation region.</td>
+</tr>
+  </tbody>
+</table>
+  
+<h3>Science Highlights</h3>
+
+<ul class="usa-list usa-list--unstyled">
+<li class="padding-bottom-1">Observed 65 GRBs (54 long and 11 short) during eight months of science operations (The full year included initial boot-up, commissioning phases, and Safe Holds)</li>
+<li class="padding-bottom-1">Co-observed with other multi-message astronomy observatories.</li>
+<li class="padding-bottom-1">Provided additional data on terrestrial gamma-ray flash sources and solar flares</li>
+<li class="padding-bottom-1">Flight proving of new CLLB scintillation detectors.</li>
+<li class="padding-bottom-1">Characterized the response of silicone photomultipliers on orbit, and determined minimum power requirements for future missions to maintain operations through end-of-mission time frames for future Glowbug-2 and StarBurst missions.</li>
+</ul>
+
+<h3>Archive</h3>
+
+HEASARC will host Glowbug data, products, and catalogs
+</div>
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    <a href="biblio/glowbug_biblio.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+      Bibliography
+    </a>
+  </div>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+ <!--#include virtual="/includes/uswds-footer.html"-->
+
+    
+	 

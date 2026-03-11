@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Einstein Probe</title>
+<meta name="orgcode" content="660">
+<meta name="keywords" content="high-energy, archive, data, astronomy data, x-ray astronomy, 
+    gamma-ray astronomy, instrument, mission, observatory, software, high energy, science, xray, 
+    x-ray, gamma ray, gamma-ray, extreme ultraviolet, EUV, astrophysics, astronomy, analysis, 
+    research">
+
+<!--#include virtual="/includes/uswds-header-no-sidenav.html"-->
+
+<div class="grid-container">
+<div class="grid-row grid-gap">
+  <div class="grid-col-12 tablet:grid-col-3">
+<!--#include virtual="/docs/heasarc/missions/uswds-missions-dates-2020s.html"-->
+    </div>
+    <div class="grid-col-12 tablet:grid-col-9 usa-prose">
+
+<hr>
+<h2>Einstein Probe</h2>
+<hr>
+
+<!--Isolate the float right image to wrap without breaking the USWDS grid-->
+<div style="overflow: hidden;">
+  <img alt="Artistic impression of Einstein Probe"
+       style="float:right; margin: 0 0 12px 12px; width: 237px;"
+       src="/Images/misc_missions/ep_cropped_sm.png">
+
+<p><b><font size="+2">T</font>he Einstein Probe</b> (EP) mission is a satellite from the Chinese Academy of Sciences in collaboration with the European Space Agency and Max Planck Institute for Extraterrestrial Physics. Its primary goals are to discover transient sources and to monitor known and new variable sources. It has a very wide field of view (3600 square degrees; &sim;1.1 steridian) with modest spectral and spatial resolution. It was launched from China&rsquo;s Xichang Satellite Launch Centre on January 9, 2024, with a planned three year nominal mission and extended mission goal of five years. It operates in a low-inclination (&lt; 29&deg;) low-earth circular orbit with an altitude of 600 km which reduces radiation interference from the South Atlantic Anomaly.</p>
+<p>EP uses lobster-eye Micro-Pore Optics (MPO), a technique for focusing X-rays which gives significant improvements on signal to noise compared to traditional grazing incidence optics and a point spread function which varies only very slightly over the entire field of view. EP has twelve Wide-field X-ray Telescope (WXT) modules, each imaging different sections of the sky. WXT is complemented by two Follow-up X-ray Telescopes (FXT) which provide a much larger effective area and narrower field-of-view. FXT is used for targets of opportunity and burst observation modes for more sensitive study of desired sources.</p>
+<p>The satellite performs observations on the night side of its orbit, mapping out half the sky every three orbits (∼97 min per orbit) using a step-and-stare strategy with 20 min exposures for each of three pointings, offset by 60 degrees from each other. The three orbit cycle steps through orientations 60 deg below, above, and along the Earth&rsquo;s equator to cycle through half-sky coverage. The daylit half of each orbit is dedicated to recharging the batteries using the solar panels; no observations are taken. This operation pattern means a full sky survey is completed after six months. Operations allow for both burst observation and targets of opportunity modes (as well as calibration, energy acquisition, and &ldquo;secure&rdquo; modes as needed).</p>
+  
+
+<h3>Mission Characteristics</h3>
+
+<table class="usa-table--borderless">
+<tbody>  
+<tr><td class="padding-right-3 text-top"><strong>Lifetime</strong></td>
+    <td class="text-top">9 Jan 2024&ndash; (Three year planned mission; five year extended mission)</td>
+</tr>
+<tr><td class="padding-right-3 text-top"><strong>Special Features</strong></td>
+    <td class="text-top">
+        <ul class="usa-list usa-list--unstyled">
+            <li class="padding-bottom-1">Lobster-eye optics for imaging.</li>
+            <li class="padding-bottom-1">Extremely large field of view.</li>
+            <li class="padding-bottom-1">Complete all-sky every six months: instantaneous half-sky every three orbits (&sim;5 hours).</li>
+        </ul>
+    </td></tr>
+</tbody
+</table>
+
+<h3>Payload</h3>
+
+<!--Use local mission table class for less generous spacing and font than USWDS default-->
+<table class="usa-table usa-hea-mission-table">
+   <colgroup>
+     <col style="width: 20%;">
+     <col style="width: 20%;">
+     <col style="width: 60%;">
+  </colgroup>
+<thead>
+ <tr><th>Instrument</th>
+     <th>Characteristic</th>
+     <th>Details</th>
+ </tr>
+ </thead>
+ <tbody>
+<tr><th rowspan="8">Wide-field X-ray Telescope</th>
+    <td><strong>Energy Range</strong></td>
+    <td>0.5&ndash;4 keV</td>
+</tr>
+<tr><td><strong>Effective Area</strong></td>
+    <td>3 cm<sup>2</sup> at 1 keV</td>
+</tr>
+<tr><td><strong>Focal Length</strong></td>
+    <td>375 mm (spherical lobster-eye micropore optics)</td>
+</tr>
+<tr><td><strong>Field of View</strong></td>
+    <td>300 sq. deg. per module<br>3600 sq. deg. total<br></td>
+</tr>
+<tr><td><strong>Angular Resolution</strong></td>
+    <td>5&prime; FWHM</td>
+</tr>
+<tr><td><strong>Sensitivity</strong></td>
+    <td>&sim;2.58&times;10<sup>-11</sup> erg s<sup>-1</sup> cm<sup>-2</sup> (&sim;0.8 mCrab) with 1 ks exposure at 5&sigma; confidence<br></td>
+</tr>
+<tr><td><strong>Energy Resolution</strong></td>
+    <td>170 eV at 1 keV</td>
+</tr>
+<tr><td colspan="2">The telescope consists of twelve modules, each with a 300 square degree field of view, and offset from each other. An optical baffle at the front of each MPO keeps out stray light. There also two layers for optical blocking: 150 nm Al and 100 nm Polyimide coated on the MPO elements, and an additional 50 nm Al coating on the CMOS sensors. The lobster-eye optics assembly focuses X-rays onto the detector plane, which is cooled to -30&deg; C. The detector array consists of a 2&times;2 array of back-illuminated CMOS detectors, each with 4000&times;4000 15 &micro;m pixels and a total 6&times;6 cm area. The optics focus to a spherical plane, so the CMOS detectors are each tilted with respect to each other to reduce image degradation.</td></tr>
+  <tr><th rowspan="8">Follow-up X-ray Telescope</th>
+    <td><strong>Energy Range</strong></td>
+    <td>0.3&ndash;10 keV<br></td>
+</tr>
+<tr><td><strong>Effective Area</strong></td>
+    <td>415 cm<sup>2</sup> at 1.25 keV</td>
+</tr>
+<tr><td><strong>Focal Length</strong></td>
+    <td>1.6 m (Wolter Type-I nested shell mirrors)</td>
+</tr>
+<tr><td><strong>Field of View</strong></td>
+    <td>60&prime;</td>
+</tr>
+<tr><td><strong>Angular Resolution</strong></td>
+    <td>30&Prime; at 1 keV (on-axis)</td>
+</tr>
+<tr><td><strong>Energy Resolution</strong></td>
+    <td>120 eV at 1.25 keV</td>
+</tr>
+<tr><td><strong>Time Resolution</strong></td>
+    <td>&sim;50 &micro;s</td>
+</tr>
+<tr><td colspan="2">Two modules will be dedicated to much smaller field of view with larger effective areas for burst follow-ups and targets of opportunity, with response time to follow-up observations of under 5 minutes. FXTuse Wolter-I type grazing incidence mirrors illuminating the focal plane equipped with pn-CCD detectors, based closely on the flight-proven eROSITA telescopes. The optics contains 54 nested mirror shells with an top diameter of 36 cm and bottom diameter of 7.6 cm. Each shell is coated with 100 nm of gold on a nickel substrate to focus X-rays in the 0.3&ndash;10 keV range onto the focal plane. The pn-CCD has a 450 &micro;m silicon layer for imaging, with 20 nm SiO<sub>2</sub>, 30 nm Si<sub>3</sub>N<sub>4</sub> and on-chip filter of 90 nm aluminum. The imaging array is 384 x 384 pixels, each 75 &micro;m square. There is also a filter wheel between the mirror assembly and detector with various filters for instrument background and source attenuation for brighter targets to prevent pile-up effects, plus in-orbit calibration.</td></tr>
+  </tbody>
+</table>
+  
+<h3>Science Goals</h3>
+
+<ul class="usa-list usa-list--unstyled">
+<li class="padding-bottom-1">Discover and characterize X-ray transients</li>
+<li class="padding-bottom-1">Observe X-ray outbursts from black holes for insights into origins, evolution, and accretion physics</li>
+<li class="padding-bottom-1">Search for X-ray sources associated with gravitational wave events and obtain more precise locations</li>
+</ul>
+</div>
+<!--================================================================-->
+<hr><p>
+
+<div class="grid-container padding-1">
+  <div class="display-flex flex-justify-center flex-wrap">
+    <a href="https://ep.bao.ac.cn/"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+      EP at CAS
+    </a>
+    <a href="biblio/einstein_probe_biblio.html"
+       class="usa-button usa-button--outline height-4 hover:bg-primary hover:text-white 
+              margin-1 padding-x-2 font-sans-3xs">
+      Bibliography
+    </a>
+  </div>
+</div>
+
+<!--================================================================-->
+<hr><p>
+
+ <!--#include virtual="/includes/uswds-footer.html"-->
+
+    
+	 

@@ -1,0 +1,103 @@
+README
+30 Oct 2025
+Jesse Allen (NASA/GSFC HEASARC)
+
+This directory contains Python code for reading .json files and generating HTML files from a
+standard Jinja flask template. There pages from high energy astrophysics mission pages
+and Guest Observer Facility (GOF) pages associated with the high energy astrophysics site
+heasarc.gsfc.nasa.gov. Pages are created in various different draft concept styles and
+uploaded to the SED gitlab repository for review and for final design concept selection.
+
+Read the HOWTO file for instructions on using the code.
+
+================================================================================
+DIRECTORIES
+
+clean_json/                      Working input directory for .json files 
+
+final_json/                      Storage for all .json files that point to
+                                 local (rather than GOF) HTML pages.
+				 I.e. /docs/heasarc/missions/(mission_name).html
+
+static_output/                   Directory containing the output from running the code
+                                 HTML files are copied to GIT repository and staged
+				 and to the relevant html_files_... directory locally
+
+gof_json/                        Storage for all .json files that are on GOF pages
+                                 I.e. /docs/(mission_name)/(mission_name).html
+
+gof_json_local/                  Storage for all .json files that are mission pages,
+                                 but for which there is also GOF directory which
+				 does NOT have a simple mission page summary
+				 (e.g. NICER)
+				 
+
+datenav/                         Sidebar HTML with decadal navigation features.
+                                 Used ONLY by HTML pages with decadal sorting
+
+
+gof_html/                        Output HTML files to go into GOF directories
+
+html_files_div_gofsidebar/
+html_files_div_nosidebar/
+html_files_tables_datesidebar/
+html_files_tables_gofsidebar/
+html_files_tables_localbar/
+html_files_tables_nosidebar/
+                                 Directories with output HTML with various different
+				 test configurations. These include:
+				 * Use of a table to break out instrument
+				   capabilities
+				 * Alternative layout that instead uses
+				   div tags (less elegant appearance, but
+				   mobile-friendly)
+				 * Use of GOF side bar navigation
+				   (matches current HEASARC page design)
+				 * Use of all mission names side bar navigation
+				   sorted by decade AND with the decade of the
+				   selection mission "active"
+				 * Use of "local" navigation instead of mission
+				   or GOF page listing. I.e. links to that mission
+				   pages's bibliography, gallery, and/or external
+				   sites
+				 * Version with no sidebar at all into order to us
+				   available screen space more efficiently
+
+
+templates/                       HTML templates used by code to convert .json into
+                                 individual mission pages using standard Flask
+				 and Beautiful Soup notation to fill in elements
+
+
+================================================================================
+FILES
+
+README                           This file
+
+HOWTO                            Instructions on how to use the code
+
+blank.json                       Empty .json example to show all possible
+                                 supported variable. Real .json files may
+				 lack of these fields (e.g. no GOF-related
+				 setting on non-GOF mission files)
+
+decades.list                     Not used by code
+                                 List of all missions broken down by the
+				 decade of launch
+                           
+mission_template.html            Input template used to generate HTML pages
+
+missions.json                    Output .json listing each mission and when processed
+                                 Not used by code or processing, but potentially
+				 useful in debugging.
+
+
+================================================================================
+CODE
+
+add_decades.pl                   Perl script used to generate the decadal sidebar components
+
+write_html.py                    MASTER PYTHON CODE. See HOWTO to see how to operate
+                                 Reads all .json files in clean_json/ and writes all
+				 .html files to static_output/ using mission_template.html
+				 to direct layout design
