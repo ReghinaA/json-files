@@ -17,14 +17,17 @@ Allure report results:
 ______________________________________
 🤖🤖🤖_______________________________________________________
 
+
 <img width="723" height="483" alt="Screenshot 2026-03-13 at 13 17 32" src="https://github.com/user-attachments/assets/63c71e3a-44a3-45b8-88dd-cc536bbc4bee" />
 
 ______________________________________
 🤖🤖🤖_______________________________________________________
 
+
 <img width="718" height="405" alt="Screenshot 2026-03-13 at 13 18 16" src="https://github.com/user-attachments/assets/e1254200-37e8-4b91-9607-f5360bb08ade" />
 
 ______________________________________
 🤖🤖🤖_______________________________________________________
+
 
 <img width="713" height="798" alt="Screenshot 2026-03-13 at 13 19 15" src="https://github.com/user-attachments/assets/1e315c5e-73b1-4bdd-9220-e151c7dfa19c" />
